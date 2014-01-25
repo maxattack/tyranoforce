@@ -1,0 +1,3 @@
+[submodule "little-polygon"]
+	path = little-polygon
+	url = git@github.com:maxattack/little-polygon.git
