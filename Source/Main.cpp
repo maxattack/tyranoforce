@@ -12,13 +12,13 @@ int main(int argc, char *argv[]) {
 	TyranoForce::canvasSize = vec(w,h);
 	TyranoForce::window = initContext("TyranoForce", 3*w, 3*h);
 
-	//	Mix_Music *music = Mix_LoadMUS("sv_ttt.xm");
-	//	if (music) {
-	//		Mix_PlayMusic(music, -1);
-	//	} else {
-	//        auto err = SDL_GetError();
-	//        LOG(("%s\n", err));
-	//    }
+	Mix_Music *music = Mix_LoadMUS("sv_ttt.xm");
+	if (music) {
+		Mix_PlayMusic(music, -1);
+	} else {
+		auto err = SDL_GetError();
+		LOG(("%s\n", err));
+	}
 
 	TyranoForce::assets = loadAssets("assets.bin");
 	if (!TyranoForce::assets) {

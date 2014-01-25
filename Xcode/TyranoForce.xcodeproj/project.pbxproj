@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50C269D918945E3A00E67DBD /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269CF1894599000E67DBD /* SDL2_mixer.framework */; };
+		50C269DA18945E3A00E67DBD /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269D01894599000E67DBD /* SDL2.framework */; };
 		50C8404018906282007FA8B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8403F18906282007FA8B8 /* Cocoa.framework */; };
 		50C8404A18906282007FA8B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50C8404818906282007FA8B8 /* InfoPlist.strings */; };
 		50C8405018906282007FA8B8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 50C8404E18906282007FA8B8 /* Credits.rtf */; };
 		50C8405818906282007FA8B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C8405718906282007FA8B8 /* Images.xcassets */; };
-		50C8407C18907413007FA8B8 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8407B18907413007FA8B8 /* libSDL2.a */; };
-		50C8407E18907425007FA8B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8407D18907425007FA8B8 /* libSDL2_mixer.a */; };
 		50C8408018907458007FA8B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8407F18907458007FA8B8 /* libz.dylib */; };
 		50C8408218907460007FA8B8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8408118907460007FA8B8 /* OpenGL.framework */; };
 		50C8409718907693007FA8B8 /* EnemyBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C8408418907693007FA8B8 /* EnemyBullet.cpp */; };
@@ -35,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50C269CF1894599000E67DBD /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2_mixer.framework"; sourceTree = "<group>"; };
+		50C269D01894599000E67DBD /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2.framework"; sourceTree = "<group>"; };
 		50C8403C18906282007FA8B8 /* TyranoForce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TyranoForce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C8403F18906282007FA8B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		50C8404218906282007FA8B8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -46,8 +48,6 @@
 		50C8404F18906282007FA8B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		50C8405718906282007FA8B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		50C8407918907367007FA8B8 /* liblittlepolygon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblittlepolygon.a; path = "../../little-polygon/lib/liblittlepolygon.a"; sourceTree = "<group>"; };
-		50C8407B18907413007FA8B8 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../usr/local/Cellar/sdl2/2.0.1/lib/libSDL2.a; sourceTree = "<group>"; };
-		50C8407D18907425007FA8B8 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../usr/local/Cellar/sdl2_mixer/2.0.0/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
 		50C8407F18907458007FA8B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		50C8408118907460007FA8B8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		50C8408418907693007FA8B8 /* EnemyBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyBullet.cpp; sourceTree = "<group>"; };
@@ -75,11 +75,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C269D918945E3A00E67DBD /* SDL2_mixer.framework in Frameworks */,
+				50C269DA18945E3A00E67DBD /* SDL2.framework in Frameworks */,
 				50F22C5A189456260050C213 /* liblittlepolygon.a in Frameworks */,
 				50C8408218907460007FA8B8 /* OpenGL.framework in Frameworks */,
 				50C8408018907458007FA8B8 /* libz.dylib in Frameworks */,
-				50C8407E18907425007FA8B8 /* libSDL2_mixer.a in Frameworks */,
-				50C8407C18907413007FA8B8 /* libSDL2.a in Frameworks */,
 				50C8404018906282007FA8B8 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,11 +109,11 @@
 		50C8403E18906282007FA8B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50C269CF1894599000E67DBD /* SDL2_mixer.framework */,
+				50C269D01894599000E67DBD /* SDL2.framework */,
 				50F22C59189456260050C213 /* liblittlepolygon.a */,
 				50C8408118907460007FA8B8 /* OpenGL.framework */,
 				50C8407F18907458007FA8B8 /* libz.dylib */,
-				50C8407D18907425007FA8B8 /* libSDL2_mixer.a */,
-				50C8407B18907413007FA8B8 /* libSDL2.a */,
 				50C8407918907367007FA8B8 /* liblittlepolygon.a */,
 				50C8403F18906282007FA8B8 /* Cocoa.framework */,
 				50C8404118906282007FA8B8 /* Other Frameworks */,
@@ -318,14 +318,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/usr/local/include,
 					"../little-polygon/vectorial/include",
 					"../little-polygon/common/include",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/lib,
-					"../little-polygon/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "../little-polygon/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -362,14 +358,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/usr/local/include,
 					"../little-polygon/vectorial/include",
 					"../little-polygon/common/include",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/lib,
-					"../little-polygon/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "../little-polygon/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
@@ -380,6 +372,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/max/src/tyranoforce/little-polygon/dependencies/macos",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TyranoForce/TyranoForce-Prefix.pch";
 				INFOPLIST_FILE = "TyranoForce/TyranoForce-Info.plist";
@@ -400,6 +396,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/max/src/tyranoforce/little-polygon/dependencies/macos",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TyranoForce/TyranoForce-Prefix.pch";
 				INFOPLIST_FILE = "TyranoForce/TyranoForce-Info.plist";
