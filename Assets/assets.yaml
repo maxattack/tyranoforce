@@ -1,0 +1,59 @@
+font/flixel: { path:  nokiafc22.ttf, size: 8 }
+
+sample/bigboom: sfx/bigboom.wav
+sample/boom: sfx/boom.wav
+sample/charge1: sfx/charge1.wav
+sample/charging1: sfx/charging1.wav
+sample/charging2: sfx/charging2.wav
+sample/charging3: sfx/charging3.wav
+sample/charging4: sfx/charging4.wav
+sample/hit: sfx/hit.wav
+sample/hyperspace: sfx/hyperspace.wav
+sample/shoot: sfx/shoot.wav
+sample/shoot_rocket: sfx/shoot_rocket.wav
+sample/spawn: sfx/spawn.wav
+sample/welcome: sfx/welcome.wav
+
+texture/BackgroundAtlas:
+  image/background: background/background_cropped.png
+  image/middleLeft: background/middle_left.png
+  image/middleRight: { path: background/middle_right.png, pivot: right }
+  image/topLeft: foreground/top_left.png
+  image/topRight: { path: foreground/top_right.png, pivot: right }
+
+texture/Sprites:
+  image/logo: { path: title/TYRANOFORRRRRRRRRCE.png,  pivot: center }
+  image/heroFace: { path: hud/hero_face.png, pivot: right }
+  image/lives: { path: hud/lives.png, pivot: center }
+  image/dinoFace: hud/psychodino_face.png
+  image/spawnLocked0: { path: hud/spawn_locked0.png, pivot: bottom_center }
+  image/spawnLocked1: { path: hud/spawn_locked1.png, pivot: bottom_center }
+  image/spawnLocked2: { path: hud/spawn_locked2.png, pivot: bottom_center }
+  image/activeIconA: { path: hud/spawnA0.png, pivot: bottom_center }
+  image/inactiveIconA: { path: hud/spawnA1.png, pivot: bottom_center }
+  image/activeIconB: { path: hud/spawnB0.png, pivot: bottom_center }
+  image/inactiveIconB: { path: hud/spawnB1.png, pivot: bottom_center }
+  image/activeIconC: { path: hud/spawnC0.png, pivot: bottom_center }
+  image/inactiveIconC: { path: hud/spawnC1.png, pivot: bottom_center }
+  image/activeIconD: { path: hud/spawnD0.png, pivot: bottom_center }
+  image/inactiveIconD: { path: hud/spawnD1.png, pivot: bottom_center }
+  image/barNib: { path: hud/UI_bar_nib.png, pivot: left_bottom }
+  image/bullet: { path: sprites/bullet.png, pivot: center }
+  image/expl: { path: sprites/expl.png, frames: 4, pivot: center }
+  image/explosion: { path: sprites/explosion.png, frames: 9, pivot: center }
+  image/hero: { path: sprites/hero.png, frames: 3, pivot: center }
+  image/missile: { path: sprites/missile0.png, pivot: center }
+  image/plasmaPoof: { path: sprites/plasma_explosion.png, frames: 5, pivot: center }
+  image/plasma: { path: sprites/plasma0.png, pivot: center }
+  image/powerPickup: { path: sprites/power.png, frames: 3, pivot: center }
+  image/shieldPickup: { path: sprites/shieldpower.png, frames: 3, pivot: center }
+  image/shield: { path: sprites/shield.png, frames: 2, pivot: center }
+  image/queen: { path: sprites/queen.png, frames: 2, pivot: center }
+  image/scarab: { path: sprites/scarab.png, frames: 2, pivot: center }
+  image/spider: { path: sprites/spider.png, frames: 2, pivot: center }
+  image/wasp: { path: sprites/wasp.png, frames: 4, pivot: center }
+  image/dino: { path: boss/dino.png, pivot: center }
+  image/shoulder: { path: boss/shoulder0.png, pivot: center    }
+  image/arm: { path: boss/arm0.png, pivot: center }
+  image/hand: { path: boss/hand0.png, pivot: center }
+
