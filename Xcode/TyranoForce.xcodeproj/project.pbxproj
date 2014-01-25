@@ -11,7 +11,6 @@
 		50C8404A18906282007FA8B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50C8404818906282007FA8B8 /* InfoPlist.strings */; };
 		50C8405018906282007FA8B8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 50C8404E18906282007FA8B8 /* Credits.rtf */; };
 		50C8405818906282007FA8B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C8405718906282007FA8B8 /* Images.xcassets */; };
-		50C8407A18907367007FA8B8 /* liblittlepolygon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8407918907367007FA8B8 /* liblittlepolygon.a */; };
 		50C8407C18907413007FA8B8 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8407B18907413007FA8B8 /* libSDL2.a */; };
 		50C8407E18907425007FA8B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8407D18907425007FA8B8 /* libSDL2_mixer.a */; };
 		50C8408018907458007FA8B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8407F18907458007FA8B8 /* libz.dylib */; };
@@ -32,6 +31,7 @@
 		50C840A618907693007FA8B8 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C8409618907693007FA8B8 /* World.cpp */; };
 		50C840A918907897007FA8B8 /* assets.bin in Resources */ = {isa = PBXBuildFile; fileRef = 50C840A818907897007FA8B8 /* assets.bin */; };
 		50C840AB1890789E007FA8B8 /* sv_ttt.xm in Resources */ = {isa = PBXBuildFile; fileRef = 50C840AA1890789E007FA8B8 /* sv_ttt.xm */; };
+		50F22C5A189456260050C213 /* liblittlepolygon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F22C59189456260050C213 /* liblittlepolygon.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +67,7 @@
 		50C8409618907693007FA8B8 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		50C840A818907897007FA8B8 /* assets.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = assets.bin; sourceTree = "<group>"; };
 		50C840AA1890789E007FA8B8 /* sv_ttt.xm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sv_ttt.xm; sourceTree = "<group>"; };
+		50F22C59189456260050C213 /* liblittlepolygon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblittlepolygon.a; path = "../../tyranoforce/little-polygon/lib/liblittlepolygon.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,11 +75,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F22C5A189456260050C213 /* liblittlepolygon.a in Frameworks */,
 				50C8408218907460007FA8B8 /* OpenGL.framework in Frameworks */,
 				50C8408018907458007FA8B8 /* libz.dylib in Frameworks */,
 				50C8407E18907425007FA8B8 /* libSDL2_mixer.a in Frameworks */,
 				50C8407C18907413007FA8B8 /* libSDL2.a in Frameworks */,
-				50C8407A18907367007FA8B8 /* liblittlepolygon.a in Frameworks */,
 				50C8404018906282007FA8B8 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +109,7 @@
 		50C8403E18906282007FA8B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50F22C59189456260050C213 /* liblittlepolygon.a */,
 				50C8408118907460007FA8B8 /* OpenGL.framework */,
 				50C8407F18907458007FA8B8 /* libz.dylib */,
 				50C8407D18907425007FA8B8 /* libSDL2_mixer.a */,
@@ -317,12 +319,12 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
-					"$HOME/src/little-polygon/vectorial/include",
-					"$HOME/src/little-polygon/common/include",
+					"../little-polygon/vectorial/include",
+					"../little-polygon/common/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
-					"$HOME/src/little-polygon/lib",
+					"../little-polygon/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
@@ -361,12 +363,12 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
-					"$HOME/src/little-polygon/vectorial/include",
-					"$HOME/src/little-polygon/common/include",
+					"../little-polygon/vectorial/include",
+					"../little-polygon/common/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
-					"$HOME/src/little-polygon/lib",
+					"../little-polygon/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
@@ -386,6 +388,7 @@
 					"/Users/max/src/little-polygon/lib",
 					/usr/local/Cellar/sdl2/2.0.1/lib,
 					/usr/local/Cellar/sdl2_mixer/2.0.0/lib,
+					"/Users/max/src/tyranoforce/little-polygon/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -405,6 +408,7 @@
 					"/Users/max/src/little-polygon/lib",
 					/usr/local/Cellar/sdl2/2.0.1/lib,
 					/usr/local/Cellar/sdl2_mixer/2.0.0/lib,
+					"/Users/max/src/tyranoforce/little-polygon/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
