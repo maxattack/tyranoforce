@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50432AFB1894D1AA001BFA6D /* TyranoForce-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50432AF61894D18D001BFA6D /* TyranoForce-Info.plist */; };
+		50432AFC1894D1BE001BFA6D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 50432AF21894D18D001BFA6D /* Credits.rtf */; };
+		50432AFD1894D1C0001BFA6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50432AF41894D18D001BFA6D /* InfoPlist.strings */; };
 		50C269D918945E3A00E67DBD /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269CF1894599000E67DBD /* SDL2_mixer.framework */; };
 		50C269DA18945E3A00E67DBD /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269D01894599000E67DBD /* SDL2.framework */; };
 		50C269EA189477EE00E67DBD /* AssetBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269DD189477EE00E67DBD /* AssetBundle.cpp */; };
@@ -23,9 +26,6 @@
 		50C269F5189477EE00E67DBD /* TilemapAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E8189477EE00E67DBD /* TilemapAsset.cpp */; };
 		50C269F6189477EE00E67DBD /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E9189477EE00E67DBD /* utils.cpp */; };
 		50C8404018906282007FA8B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8403F18906282007FA8B8 /* Cocoa.framework */; };
-		50C8404A18906282007FA8B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50C8404818906282007FA8B8 /* InfoPlist.strings */; };
-		50C8405018906282007FA8B8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 50C8404E18906282007FA8B8 /* Credits.rtf */; };
-		50C8405818906282007FA8B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C8405718906282007FA8B8 /* Images.xcassets */; };
 		50C8408018907458007FA8B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8407F18907458007FA8B8 /* libz.dylib */; };
 		50C8408218907460007FA8B8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8408118907460007FA8B8 /* OpenGL.framework */; };
 		50C8409718907693007FA8B8 /* EnemyBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C8408418907693007FA8B8 /* EnemyBullet.cpp */; };
@@ -47,6 +47,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50432AF31894D18D001BFA6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Credits.rtf; sourceTree = "<group>"; };
+		50432AF51894D18D001BFA6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		50432AF61894D18D001BFA6D /* TyranoForce-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TyranoForce-Info.plist"; sourceTree = SOURCE_ROOT; };
+		50432AF71894D18D001BFA6D /* TyranoForce-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyranoForce-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		50C269CF1894599000E67DBD /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2_mixer.framework"; sourceTree = "<group>"; };
 		50C269D01894599000E67DBD /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2.framework"; sourceTree = "<group>"; };
 		50C269DD189477EE00E67DBD /* AssetBundle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetBundle.cpp; sourceTree = "<group>"; };
@@ -67,11 +71,6 @@
 		50C8404218906282007FA8B8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		50C8404318906282007FA8B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		50C8404418906282007FA8B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		50C8404718906282007FA8B8 /* TyranoForce-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TyranoForce-Info.plist"; sourceTree = "<group>"; };
-		50C8404918906282007FA8B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		50C8404D18906282007FA8B8 /* TyranoForce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TyranoForce-Prefix.pch"; sourceTree = "<group>"; };
-		50C8404F18906282007FA8B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		50C8405718906282007FA8B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		50C8407F18907458007FA8B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		50C8408118907460007FA8B8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		50C8408418907693007FA8B8 /* EnemyBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyBullet.cpp; sourceTree = "<group>"; };
@@ -109,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50432AF11894D18D001BFA6D /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				50432AF21894D18D001BFA6D /* Credits.rtf */,
+				50432AF41894D18D001BFA6D /* InfoPlist.strings */,
+			);
+			path = en.lproj;
+			sourceTree = SOURCE_ROOT;
+		};
 		50C269DC189477D700E67DBD /* Little Polygon */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,11 +184,9 @@
 		50C8404618906282007FA8B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				50C8405718906282007FA8B8 /* Images.xcassets */,
-				50C8404718906282007FA8B8 /* TyranoForce-Info.plist */,
-				50C8404818906282007FA8B8 /* InfoPlist.strings */,
-				50C8404D18906282007FA8B8 /* TyranoForce-Prefix.pch */,
-				50C8404E18906282007FA8B8 /* Credits.rtf */,
+				50432AF11894D18D001BFA6D /* en.lproj */,
+				50432AF61894D18D001BFA6D /* TyranoForce-Info.plist */,
+				50432AF71894D18D001BFA6D /* TyranoForce-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			path = TyranoForce;
@@ -272,10 +278,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C840A918907897007FA8B8 /* assets.bin in Resources */,
-				50C8404A18906282007FA8B8 /* InfoPlist.strings in Resources */,
-				50C8405818906282007FA8B8 /* Images.xcassets in Resources */,
+				50432AFD1894D1C0001BFA6D /* InfoPlist.strings in Resources */,
+				50432AFC1894D1BE001BFA6D /* Credits.rtf in Resources */,
+				50432AFB1894D1AA001BFA6D /* TyranoForce-Info.plist in Resources */,
 				50C840AB1890789E007FA8B8 /* sv_ttt.xm in Resources */,
-				50C8405018906282007FA8B8 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,20 +325,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		50C8404818906282007FA8B8 /* InfoPlist.strings */ = {
+		50432AF21894D18D001BFA6D /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				50C8404918906282007FA8B8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		50C8404E18906282007FA8B8 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				50C8404F18906282007FA8B8 /* en */,
+				50432AF31894D18D001BFA6D /* en */,
 			);
 			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		50432AF41894D18D001BFA6D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50432AF51894D18D001BFA6D /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -425,15 +431,14 @@
 		50C8406E18906282007FA8B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/max/src/tyranoforce/little-polygon/dependencies/macos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TyranoForce/TyranoForce-Prefix.pch";
-				INFOPLIST_FILE = "TyranoForce/TyranoForce-Info.plist";
+				GCC_PREFIX_HEADER = "TyranoForce-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/TyranoForce-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -443,15 +448,14 @@
 		50C8406F18906282007FA8B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/max/src/tyranoforce/little-polygon/dependencies/macos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TyranoForce/TyranoForce-Prefix.pch";
-				INFOPLIST_FILE = "TyranoForce/TyranoForce-Info.plist";
+				GCC_PREFIX_HEADER = "TyranoForce-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/TyranoForce-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
