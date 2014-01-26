@@ -326,14 +326,14 @@ namespace TyranoForce {
         ParallaxFX parallax;
 		HeadsUpDisplay hud;
 		Hero hero;
-		CompactPool<EnemyBullet, 256> enemyBullets;
-		CompactPool<EnemyWasp, 32> wasps;
-		CompactPool<EnemySpider, 16> spiders;
-		CompactPool<EnemyScarab, 8> scarabs;
-		CompactPool<EnemyQueen, 8> queens;
-		CompactPool<HeroBullet, 64> heroBullets;
-		CompactPool<Explosion, 64> explosions;
-        
+		CompactPoolWithBuffer<EnemyBullet, 256> enemyBullets;
+		CompactPoolWithBuffer<EnemyWasp, 32> wasps;
+		CompactPoolWithBuffer<EnemySpider, 16> spiders;
+		CompactPoolWithBuffer<EnemyScarab, 8> scarabs;
+		CompactPoolWithBuffer<EnemyQueen, 8> queens;
+		CompactPoolWithBuffer<HeroBullet, 64> heroBullets;
+		CompactPoolWithBuffer<Explosion, 64> explosions;
+		
 		ImageAsset *dino;
 		
 		bool anyEnemies() const {

@@ -134,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				50C269DC189477D700E67DBD /* Little Polygon */,
-				50C840A718907885007FA8B8 /* Assets */,
 				50C840831890758A007FA8B8 /* Source */,
+				50C840A718907885007FA8B8 /* Assets */,
 				50C8404618906282007FA8B8 /* Supporting Files */,
 				50C8403E18906282007FA8B8 /* Frameworks */,
 				50C8403D18906282007FA8B8 /* Products */,

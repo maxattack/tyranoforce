@@ -6,12 +6,37 @@ AssetRef TyranoForce::assets;
 SpritePlotterRef TyranoForce::renderer;
 Timer TyranoForce::timer;
 
+#if __IPHONEOS__
+static void update(void *context) {
+	auto world = (TyranoForce::World*) context;
+	glClear(GL_COLOR_BUFFER_BIT);
+	world->input.enterFrame();
+	SDL_Event event;
+	while(SDL_PollEvent(&event)) {
+		if (!world->input.handleEvent(event)) {
+			auto done = (event.type == SDL_QUIT) ||
+			            (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE);
+			if (done) {
+				delete world;
+				exit(0);
+			}
+		}
+	}
+	TyranoForce::timer.tick();
+	world->tick();
+	world->draw();
+	SDL_GL_SwapWindow(TyranoForce::window);
+}
+#endif
+
 int main(int argc, char *argv[]) {
-	int w = 160;
-	int h = 320;
-	TyranoForce::window = initContext("TyranoForce", 3*w, 3*h);
-	SDL_GetWindowSize(TyranoForce::window, &w, &h);
-	TyranoForce::canvasSize = vec(w/3,h/3);
+	int canvasW = 160;
+	int canvasH = 320;
+	int pixelW = 3 * canvasW;
+	int pixelH = 3 * canvasH;
+	TyranoForce::window = initContext("TyranoForce", pixelW, pixelH);
+	SDL_GetWindowSize(TyranoForce::window, &pixelW, &pixelH);
+	TyranoForce::canvasSize = vec(canvasW, canvasW * pixelH / double(pixelW));
 
 	Mix_Music *music = Mix_LoadMUS("sv_ttt.xm");
 	if (music) {
@@ -29,25 +54,30 @@ int main(int argc, char *argv[]) {
 
 	TyranoForce::renderer = createSpritePlotter();
 	TyranoForce::timer.reset();
-	TyranoForce::World world;
-	world.init();
+	TyranoForce::World *world = new TyranoForce::World();
+	world->init();
+
+#if __IPHONEOS__
+	SDL_iPhoneSetAnimationCallback(TyranoForce::window, 1, update, world);
+#else
 
 	auto done = false;
 	while(!done) {
 		glClear(GL_COLOR_BUFFER_BIT);
-		world.input.enterFrame();
+		world->input.enterFrame();
 		SDL_Event event;
 		while(SDL_PollEvent(&event)) {
-			if (!world.input.handleEvent(event)) {
+			if (!world->input.handleEvent(event)) {
 				done |= (event.type == SDL_QUIT) ||
 						(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE);
 			}
 		}
 		TyranoForce::timer.tick();
-		world.tick();
-		world.draw();
+		world->tick();
+		world->draw();
 		SDL_GL_SwapWindow(TyranoForce::window);
 	}
 
+#endif
 	return 0;
 }

@@ -29,6 +29,7 @@ void TyranoForce::World::init() {
 void TyranoForce::World::draw() {
 	renderer.begin(canvasSize);
 	parallax.drawBackground();
+	parallax.drawForeground();
 	
 	renderer.drawImage(dino, vec(hud.easedArrowPosition, -6));
 
@@ -44,18 +45,17 @@ void TyranoForce::World::draw() {
 	
 	hero.draw();
 	
-	parallax.drawForeground();
 	hud.draw();
 	
 	renderer.end();
 }
 
 template<typename EnemyType, int N>
-bool collideBulletWith(World& world, HeroBullet &bullet, CompactPool<EnemyType, N> &enemies) {
+static bool collideBulletWith(World& world, HeroBullet &bullet, CompactPoolWithBuffer<EnemyType, N> &enemies) {
 	for (EnemyType *e=enemies.begin(); e!=enemies.end();) {
 		if (bullet.collider.overlaps(e->collider)) {
 			if (e->takeDamage(world, kHeroBulletDamage)) {
-				//world.enemies.release(e);
+				world.releaseEnemyUnit(e);
 			}
 			world.spawnExplosion(bullet.collider.pos, false);
 			world.heroBullets.release(&bullet);
@@ -163,6 +163,18 @@ void TyranoForce::World::spawnHeroBullet(vec2 pos, vec2 heading) {
 void TyranoForce::World::spawnExplosion(vec2 pos, bool isBig) {
 	if (!explosions.isFull()) {
 		explosions.alloc()->init(isBig ? assets.image("explosion") : assets.image("expl"), pos);
+	}
+}
+
+void TyranoForce::World::releaseEnemyUnit(EnemyUnit *unit) {
+	if (wasps.active((EnemyWasp*)unit)) {
+		wasps.release((EnemyWasp*)unit);
+	} else if (spiders.active((EnemySpider*)unit)) {
+		spiders.release((EnemySpider*)unit);
+	} else if (scarabs.active((EnemyScarab*)unit)) {
+		scarabs.release((EnemyScarab*)unit);
+	} else if (queens.active((EnemyQueen*)unit)) {
+		queens.release((EnemyQueen*)unit);
 	}
 }
 
