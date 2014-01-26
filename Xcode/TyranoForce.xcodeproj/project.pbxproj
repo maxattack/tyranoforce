@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		50C269D918945E3A00E67DBD /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269CF1894599000E67DBD /* SDL2_mixer.framework */; };
 		50C269DA18945E3A00E67DBD /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269D01894599000E67DBD /* SDL2.framework */; };
+		50C269EA189477EE00E67DBD /* AssetBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269DD189477EE00E67DBD /* AssetBundle.cpp */; };
+		50C269EB189477EE00E67DBD /* CirclePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269DE189477EE00E67DBD /* CirclePlotter.cpp */; };
+		50C269EC189477EE00E67DBD /* CollisionContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269DF189477EE00E67DBD /* CollisionContext.cpp */; };
+		50C269ED189477EE00E67DBD /* FkContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E0189477EE00E67DBD /* FkContext.cpp */; };
+		50C269EE189477EE00E67DBD /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E1189477EE00E67DBD /* glew.c */; };
+		50C269EF189477EE00E67DBD /* LinePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E2189477EE00E67DBD /* LinePlotter.cpp */; };
+		50C269F0189477EE00E67DBD /* SampleAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E3189477EE00E67DBD /* SampleAsset.cpp */; };
+		50C269F1189477EE00E67DBD /* SplinePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E4189477EE00E67DBD /* SplinePlotter.cpp */; };
+		50C269F2189477EE00E67DBD /* SpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E5189477EE00E67DBD /* SpriteBatch.cpp */; };
+		50C269F3189477EE00E67DBD /* SpritePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E6189477EE00E67DBD /* SpritePlotter.cpp */; };
+		50C269F4189477EE00E67DBD /* TextureAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E7189477EE00E67DBD /* TextureAsset.cpp */; };
+		50C269F5189477EE00E67DBD /* TilemapAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E8189477EE00E67DBD /* TilemapAsset.cpp */; };
+		50C269F6189477EE00E67DBD /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E9189477EE00E67DBD /* utils.cpp */; };
 		50C8404018906282007FA8B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8403F18906282007FA8B8 /* Cocoa.framework */; };
 		50C8404A18906282007FA8B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50C8404818906282007FA8B8 /* InfoPlist.strings */; };
 		50C8405018906282007FA8B8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 50C8404E18906282007FA8B8 /* Credits.rtf */; };
@@ -31,12 +44,24 @@
 		50C840A618907693007FA8B8 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C8409618907693007FA8B8 /* World.cpp */; };
 		50C840A918907897007FA8B8 /* assets.bin in Resources */ = {isa = PBXBuildFile; fileRef = 50C840A818907897007FA8B8 /* assets.bin */; };
 		50C840AB1890789E007FA8B8 /* sv_ttt.xm in Resources */ = {isa = PBXBuildFile; fileRef = 50C840AA1890789E007FA8B8 /* sv_ttt.xm */; };
-		50F22C5A189456260050C213 /* liblittlepolygon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F22C59189456260050C213 /* liblittlepolygon.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		50C269CF1894599000E67DBD /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2_mixer.framework"; sourceTree = "<group>"; };
 		50C269D01894599000E67DBD /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2.framework"; sourceTree = "<group>"; };
+		50C269DD189477EE00E67DBD /* AssetBundle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetBundle.cpp; sourceTree = "<group>"; };
+		50C269DE189477EE00E67DBD /* CirclePlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CirclePlotter.cpp; sourceTree = "<group>"; };
+		50C269DF189477EE00E67DBD /* CollisionContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionContext.cpp; sourceTree = "<group>"; };
+		50C269E0189477EE00E67DBD /* FkContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FkContext.cpp; sourceTree = "<group>"; };
+		50C269E1189477EE00E67DBD /* glew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glew.c; sourceTree = "<group>"; };
+		50C269E2189477EE00E67DBD /* LinePlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinePlotter.cpp; sourceTree = "<group>"; };
+		50C269E3189477EE00E67DBD /* SampleAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleAsset.cpp; sourceTree = "<group>"; };
+		50C269E4189477EE00E67DBD /* SplinePlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplinePlotter.cpp; sourceTree = "<group>"; };
+		50C269E5189477EE00E67DBD /* SpriteBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBatch.cpp; sourceTree = "<group>"; };
+		50C269E6189477EE00E67DBD /* SpritePlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpritePlotter.cpp; sourceTree = "<group>"; };
+		50C269E7189477EE00E67DBD /* TextureAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureAsset.cpp; sourceTree = "<group>"; };
+		50C269E8189477EE00E67DBD /* TilemapAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TilemapAsset.cpp; sourceTree = "<group>"; };
+		50C269E9189477EE00E67DBD /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
 		50C8403C18906282007FA8B8 /* TyranoForce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TyranoForce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C8403F18906282007FA8B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		50C8404218906282007FA8B8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -47,7 +72,6 @@
 		50C8404D18906282007FA8B8 /* TyranoForce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TyranoForce-Prefix.pch"; sourceTree = "<group>"; };
 		50C8404F18906282007FA8B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		50C8405718906282007FA8B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		50C8407918907367007FA8B8 /* liblittlepolygon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblittlepolygon.a; path = "../../little-polygon/lib/liblittlepolygon.a"; sourceTree = "<group>"; };
 		50C8407F18907458007FA8B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		50C8408118907460007FA8B8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		50C8408418907693007FA8B8 /* EnemyBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyBullet.cpp; sourceTree = "<group>"; };
@@ -67,7 +91,6 @@
 		50C8409618907693007FA8B8 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		50C840A818907897007FA8B8 /* assets.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = assets.bin; sourceTree = "<group>"; };
 		50C840AA1890789E007FA8B8 /* sv_ttt.xm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sv_ttt.xm; sourceTree = "<group>"; };
-		50F22C59189456260050C213 /* liblittlepolygon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblittlepolygon.a; path = "../../tyranoforce/little-polygon/lib/liblittlepolygon.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +100,6 @@
 			files = (
 				50C269D918945E3A00E67DBD /* SDL2_mixer.framework in Frameworks */,
 				50C269DA18945E3A00E67DBD /* SDL2.framework in Frameworks */,
-				50F22C5A189456260050C213 /* liblittlepolygon.a in Frameworks */,
 				50C8408218907460007FA8B8 /* OpenGL.framework in Frameworks */,
 				50C8408018907458007FA8B8 /* libz.dylib in Frameworks */,
 				50C8404018906282007FA8B8 /* Cocoa.framework in Frameworks */,
@@ -87,9 +109,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50C269DC189477D700E67DBD /* Little Polygon */ = {
+			isa = PBXGroup;
+			children = (
+				50C269DD189477EE00E67DBD /* AssetBundle.cpp */,
+				50C269DE189477EE00E67DBD /* CirclePlotter.cpp */,
+				50C269DF189477EE00E67DBD /* CollisionContext.cpp */,
+				50C269E0189477EE00E67DBD /* FkContext.cpp */,
+				50C269E1189477EE00E67DBD /* glew.c */,
+				50C269E2189477EE00E67DBD /* LinePlotter.cpp */,
+				50C269E3189477EE00E67DBD /* SampleAsset.cpp */,
+				50C269E4189477EE00E67DBD /* SplinePlotter.cpp */,
+				50C269E5189477EE00E67DBD /* SpriteBatch.cpp */,
+				50C269E6189477EE00E67DBD /* SpritePlotter.cpp */,
+				50C269E7189477EE00E67DBD /* TextureAsset.cpp */,
+				50C269E8189477EE00E67DBD /* TilemapAsset.cpp */,
+				50C269E9189477EE00E67DBD /* utils.cpp */,
+			);
+			name = "Little Polygon";
+			path = "../little-polygon/src";
+			sourceTree = "<group>";
+		};
 		50C8403318906282007FA8B8 = {
 			isa = PBXGroup;
 			children = (
+				50C269DC189477D700E67DBD /* Little Polygon */,
 				50C840A718907885007FA8B8 /* Assets */,
 				50C840831890758A007FA8B8 /* Source */,
 				50C8404618906282007FA8B8 /* Supporting Files */,
@@ -111,10 +155,8 @@
 			children = (
 				50C269CF1894599000E67DBD /* SDL2_mixer.framework */,
 				50C269D01894599000E67DBD /* SDL2.framework */,
-				50F22C59189456260050C213 /* liblittlepolygon.a */,
 				50C8408118907460007FA8B8 /* OpenGL.framework */,
 				50C8407F18907458007FA8B8 /* libz.dylib */,
-				50C8407918907367007FA8B8 /* liblittlepolygon.a */,
 				50C8403F18906282007FA8B8 /* Cocoa.framework */,
 				50C8404118906282007FA8B8 /* Other Frameworks */,
 			);
@@ -245,19 +287,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C840A518907693007FA8B8 /* ParallaxFX.cpp in Sources */,
+				50C269EC189477EE00E67DBD /* CollisionContext.cpp in Sources */,
+				50C269F2189477EE00E67DBD /* SpriteBatch.cpp in Sources */,
+				50C269EF189477EE00E67DBD /* LinePlotter.cpp in Sources */,
 				50C8409718907693007FA8B8 /* EnemyBullet.cpp in Sources */,
+				50C269EE189477EE00E67DBD /* glew.c in Sources */,
 				50C840A618907693007FA8B8 /* World.cpp in Sources */,
+				50C269EA189477EE00E67DBD /* AssetBundle.cpp in Sources */,
 				50C8409C18907693007FA8B8 /* EnemyWasp.cpp in Sources */,
 				50C8409F18907693007FA8B8 /* HeadsUpDisplay.cpp in Sources */,
 				50C840A118907693007FA8B8 /* HeroBullet.cpp in Sources */,
+				50C269F3189477EE00E67DBD /* SpritePlotter.cpp in Sources */,
+				50C269ED189477EE00E67DBD /* FkContext.cpp in Sources */,
 				50C840A318907693007FA8B8 /* Input.cpp in Sources */,
 				50C8409A18907693007FA8B8 /* EnemySpider.cpp in Sources */,
 				50C8409818907693007FA8B8 /* EnemyQueen.cpp in Sources */,
 				50C840A218907693007FA8B8 /* Main.cpp in Sources */,
+				50C269F1189477EE00E67DBD /* SplinePlotter.cpp in Sources */,
 				50C8409918907693007FA8B8 /* EnemyScarab.cpp in Sources */,
+				50C269F5189477EE00E67DBD /* TilemapAsset.cpp in Sources */,
+				50C269F0189477EE00E67DBD /* SampleAsset.cpp in Sources */,
 				50C8409D18907693007FA8B8 /* Explosion.cpp in Sources */,
 				50C8409B18907693007FA8B8 /* EnemyUnit.cpp in Sources */,
+				50C269EB189477EE00E67DBD /* CirclePlotter.cpp in Sources */,
+				50C269F6189477EE00E67DBD /* utils.cpp in Sources */,
 				50C840A018907693007FA8B8 /* Hero.cpp in Sources */,
+				50C269F4189477EE00E67DBD /* TextureAsset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,9 +374,9 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"../little-polygon/vectorial/include",
-					"../little-polygon/common/include",
+					"../little-polygon/include",
 				);
-				LIBRARY_SEARCH_PATHS = "../little-polygon/lib";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -359,9 +414,9 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"../little-polygon/vectorial/include",
-					"../little-polygon/common/include",
+					"../little-polygon/include",
 				);
-				LIBRARY_SEARCH_PATHS = "../little-polygon/lib";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
@@ -379,13 +434,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TyranoForce/TyranoForce-Prefix.pch";
 				INFOPLIST_FILE = "TyranoForce/TyranoForce-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/max/src/little-polygon/lib",
-					/usr/local/Cellar/sdl2/2.0.1/lib,
-					/usr/local/Cellar/sdl2_mixer/2.0.0/lib,
-					"/Users/max/src/tyranoforce/little-polygon/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -403,13 +452,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TyranoForce/TyranoForce-Prefix.pch";
 				INFOPLIST_FILE = "TyranoForce/TyranoForce-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/max/src/little-polygon/lib",
-					/usr/local/Cellar/sdl2/2.0.1/lib,
-					/usr/local/Cellar/sdl2_mixer/2.0.0/lib,
-					"/Users/max/src/tyranoforce/little-polygon/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -33,6 +33,7 @@ void TyranoForce::EnemyQueen::Turret::tick(World &world, EnemyQueen &queen) {
 }
 
 void TyranoForce::EnemyQueen::init(float spawnX) {
+	img = assets.image("queen");
 	collider.initWithImage(vec(spawnX, -48), img);
 	hp = kHpQueen;
 	

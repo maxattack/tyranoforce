@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A4EBE2AA-2709-4027-9996-56AF08FC7CBB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TyranoForce</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FBC35B00-C68D-4D2C-9098-143417F7A4DF</key>
+		<string>ssh://github.com/maxattack/tyranoforce.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TyranoForce/TyranoForce.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FBC35B00-C68D-4D2C-9098-143417F7A4DF</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/maxattack/tyranoforce.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FBC35B00-C68D-4D2C-9098-143417F7A4DF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FBC35B00-C68D-4D2C-9098-143417F7A4DF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tyranoforce</string>
+		</dict>
+	</array>
+</dict>
+</plist>

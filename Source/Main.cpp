@@ -9,8 +9,9 @@ Timer TyranoForce::timer;
 int main(int argc, char *argv[]) {
 	int w = 160;
 	int h = 320;
-	TyranoForce::canvasSize = vec(w,h);
 	TyranoForce::window = initContext("TyranoForce", 3*w, 3*h);
+	SDL_GetWindowSize(TyranoForce::window, &w, &h);
+	TyranoForce::canvasSize = vec(w/3,h/3);
 
 	Mix_Music *music = Mix_LoadMUS("sv_ttt.xm");
 	if (music) {
