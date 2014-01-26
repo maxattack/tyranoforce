@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		50432AFB1894D1AA001BFA6D /* TyranoForce-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50432AF61894D18D001BFA6D /* TyranoForce-Info.plist */; };
-		50432AFC1894D1BE001BFA6D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 50432AF21894D18D001BFA6D /* Credits.rtf */; };
-		50432AFD1894D1C0001BFA6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50432AF41894D18D001BFA6D /* InfoPlist.strings */; };
 		50C269D918945E3A00E67DBD /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269CF1894599000E67DBD /* SDL2_mixer.framework */; };
 		50C269DA18945E3A00E67DBD /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269D01894599000E67DBD /* SDL2.framework */; };
 		50C269EA189477EE00E67DBD /* AssetBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269DD189477EE00E67DBD /* AssetBundle.cpp */; };
@@ -44,11 +42,10 @@
 		50C840A618907693007FA8B8 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C8409618907693007FA8B8 /* World.cpp */; };
 		50C840A918907897007FA8B8 /* assets.bin in Resources */ = {isa = PBXBuildFile; fileRef = 50C840A818907897007FA8B8 /* assets.bin */; };
 		50C840AB1890789E007FA8B8 /* sv_ttt.xm in Resources */ = {isa = PBXBuildFile; fileRef = 50C840AA1890789E007FA8B8 /* sv_ttt.xm */; };
+		50D70ADA1894D3EE000F8365 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 50D70AD81894D3E4000F8365 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		50432AF31894D18D001BFA6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Credits.rtf; sourceTree = "<group>"; };
-		50432AF51894D18D001BFA6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		50432AF61894D18D001BFA6D /* TyranoForce-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TyranoForce-Info.plist"; sourceTree = SOURCE_ROOT; };
 		50432AF71894D18D001BFA6D /* TyranoForce-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyranoForce-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		50C269CF1894599000E67DBD /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2_mixer.framework"; sourceTree = "<group>"; };
@@ -90,6 +87,7 @@
 		50C8409618907693007FA8B8 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		50C840A818907897007FA8B8 /* assets.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = assets.bin; sourceTree = "<group>"; };
 		50C840AA1890789E007FA8B8 /* sv_ttt.xm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sv_ttt.xm; sourceTree = "<group>"; };
+		50D70AD81894D3E4000F8365 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,15 +106,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		50432AF11894D18D001BFA6D /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				50432AF21894D18D001BFA6D /* Credits.rtf */,
-				50432AF41894D18D001BFA6D /* InfoPlist.strings */,
-			);
-			path = en.lproj;
-			sourceTree = SOURCE_ROOT;
-		};
 		50C269DC189477D700E67DBD /* Little Polygon */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,7 +173,7 @@
 		50C8404618906282007FA8B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				50432AF11894D18D001BFA6D /* en.lproj */,
+				50D70AD81894D3E4000F8365 /* Credits.rtf */,
 				50432AF61894D18D001BFA6D /* TyranoForce-Info.plist */,
 				50432AF71894D18D001BFA6D /* TyranoForce-Prefix.pch */,
 			);
@@ -278,9 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C840A918907897007FA8B8 /* assets.bin in Resources */,
-				50432AFD1894D1C0001BFA6D /* InfoPlist.strings in Resources */,
-				50432AFC1894D1BE001BFA6D /* Credits.rtf in Resources */,
 				50432AFB1894D1AA001BFA6D /* TyranoForce-Info.plist in Resources */,
+				50D70ADA1894D3EE000F8365 /* Credits.rtf in Resources */,
 				50C840AB1890789E007FA8B8 /* sv_ttt.xm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,25 +311,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		50432AF21894D18D001BFA6D /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				50432AF31894D18D001BFA6D /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		50432AF41894D18D001BFA6D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				50432AF51894D18D001BFA6D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		50C8406B18906282007FA8B8 /* Debug */ = {
