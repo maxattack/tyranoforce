@@ -352,7 +352,6 @@ namespace TyranoForce {
 		void spawnEnemyBullet(vec2 pos, vec2 heading);
 		void spawnHeroBullet(vec2 pos, vec2 heading);
 		void spawnExplosion(vec2 pos, bool isBig);
-		void releaseEnemyUnit(EnemyUnit *unit);
 	};
 	
 }

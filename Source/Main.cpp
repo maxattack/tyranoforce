@@ -31,9 +31,9 @@ static void update(void *context) {
 
 int main(int argc, char *argv[]) {
 	int canvasW = 160;
-	int canvasH = 320;
-	int pixelW = 3 * canvasW;
-	int pixelH = 3 * canvasH;
+	int canvasH = 240;
+	int pixelW = 4 * canvasW;
+	int pixelH = 4 * canvasH;
 	TyranoForce::window = initContext("TyranoForce", pixelW, pixelH);
 	SDL_GetWindowSize(TyranoForce::window, &pixelW, &pixelH);
 	TyranoForce::canvasSize = vec(canvasW, canvasW * pixelH / double(pixelW));
@@ -42,8 +42,10 @@ int main(int argc, char *argv[]) {
 	if (music) {
 		Mix_PlayMusic(music, -1);
 	} else {
+#if DEBUG
 		auto err = SDL_GetError();
 		LOG(("%s\n", err));
+#endif
 	}
 
 	TyranoForce::assets = loadAssets("assets.bin");
