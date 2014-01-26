@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503DC6301894D43F00CE8BFB /* TyranoForce-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503DC62E1894D43F00CE8BFB /* TyranoForce-Info.plist */; };
 		50432A3E1894969F001BFA6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50432A3D1894969F001BFA6D /* Foundation.framework */; };
 		50432A401894969F001BFA6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50432A3F1894969F001BFA6D /* CoreGraphics.framework */; };
 		50432A421894969F001BFA6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50432A411894969F001BFA6D /* UIKit.framework */; };
@@ -81,12 +82,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		503DC62E1894D43F00CE8BFB /* TyranoForce-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TyranoForce-Info.plist"; sourceTree = SOURCE_ROOT; };
+		503DC62F1894D43F00CE8BFB /* TyranoForce-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyranoForce-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		50432A3A1894969F001BFA6D /* TyranoForce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TyranoForce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50432A3D1894969F001BFA6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50432A3F1894969F001BFA6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		50432A411894969F001BFA6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		50432A451894969F001BFA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		50432A4B1894969F001BFA6D /* TyranoForce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TyranoForce-Prefix.pch"; path = "../TyranoForce-Prefix.pch"; sourceTree = "<group>"; };
 		50432A6E1894975A001BFA6D /* EnemyBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyBullet.cpp; sourceTree = "<group>"; };
 		50432A6F1894975A001BFA6D /* EnemyQueen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyQueen.cpp; sourceTree = "<group>"; };
 		50432A701894975A001BFA6D /* EnemyScarab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyScarab.cpp; sourceTree = "<group>"; };
@@ -191,10 +192,10 @@
 		50432A441894969F001BFA6D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				503DC62E1894D43F00CE8BFB /* TyranoForce-Info.plist */,
+				503DC62F1894D43F00CE8BFB /* TyranoForce-Prefix.pch */,
 				50432AE71894CED1001BFA6D /* Default-568h@2x.png */,
 				50432AE91894CED1001BFA6D /* Default@2x.png */,
-				50432A451894969F001BFA6D /* Info.plist */,
-				50432A4B1894969F001BFA6D /* TyranoForce-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			path = TyranoForce;
@@ -353,6 +354,7 @@
 				50432AE11894A5F4001BFA6D /* sv_ttt.xm in Resources */,
 				50432AE01894A5F4001BFA6D /* assets.bin in Resources */,
 				50432AEE1894CED1001BFA6D /* Default@2x.png in Resources */,
+				503DC6301894D43F00CE8BFB /* TyranoForce-Info.plist in Resources */,
 				50432AEC1894CED1001BFA6D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,7 +511,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/TyranoForce-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -526,7 +528,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/TyranoForce-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
