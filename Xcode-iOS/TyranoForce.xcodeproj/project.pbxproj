@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		503DC6301894D43F00CE8BFB /* TyranoForce-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503DC62E1894D43F00CE8BFB /* TyranoForce-Info.plist */; };
 		50432A3E1894969F001BFA6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50432A3D1894969F001BFA6D /* Foundation.framework */; };
 		50432A401894969F001BFA6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50432A3F1894969F001BFA6D /* CoreGraphics.framework */; };
 		50432A421894969F001BFA6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50432A411894969F001BFA6D /* UIKit.framework */; };
@@ -48,6 +47,7 @@
 		50432AE11894A5F4001BFA6D /* sv_ttt.xm in Resources */ = {isa = PBXBuildFile; fileRef = 50432ADF1894A5F4001BFA6D /* sv_ttt.xm */; };
 		50432AEC1894CED1001BFA6D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50432AE71894CED1001BFA6D /* Default-568h@2x.png */; };
 		50432AEE1894CED1001BFA6D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50432AE91894CED1001BFA6D /* Default@2x.png */; };
+		50E288011895006500DAC178 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 50E288001895006500DAC178 /* Icon-120.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +128,7 @@
 		50432ADF1894A5F4001BFA6D /* sv_ttt.xm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sv_ttt.xm; sourceTree = "<group>"; };
 		50432AE71894CED1001BFA6D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		50432AE91894CED1001BFA6D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		50E288001895006500DAC178 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +193,7 @@
 		50432A441894969F001BFA6D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				50E288001895006500DAC178 /* Icon-120.png */,
 				503DC62E1894D43F00CE8BFB /* TyranoForce-Info.plist */,
 				503DC62F1894D43F00CE8BFB /* TyranoForce-Prefix.pch */,
 				50432AE71894CED1001BFA6D /* Default-568h@2x.png */,
@@ -301,6 +303,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Little Polygon";
+				TargetAttributes = {
+					50432A391894969F001BFA6D = {
+						DevelopmentTeam = D4J9RDG6Y5;
+					};
+				};
 			};
 			buildConfigurationList = 50432A351894969F001BFA6D /* Build configuration list for PBXProject "TyranoForce" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -353,8 +360,8 @@
 			files = (
 				50432AE11894A5F4001BFA6D /* sv_ttt.xm in Resources */,
 				50432AE01894A5F4001BFA6D /* assets.bin in Resources */,
+				50E288011895006500DAC178 /* Icon-120.png in Resources */,
 				50432AEE1894CED1001BFA6D /* Default@2x.png in Resources */,
-				503DC6301894D43F00CE8BFB /* TyranoForce-Info.plist in Resources */,
 				50432AEC1894CED1001BFA6D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +521,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TyranoForce-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -531,6 +539,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TyranoForce-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
