@@ -20,13 +20,20 @@ int main(int argc, char *argv[]) {
 
 	static TyranoForce::World world;
 
-	Mix_Music *music = Mix_LoadMUS("sv_ttt.xm");
-	if (music) {
-		Mix_PlayMusic(music, -1);
-	}
+//	Mix_Music *music = Mix_LoadMUS("sv_ttt.xm");
+//	if (music) {
+//		Mix_PlayMusic(music, -1);
+//	}
 	
-		
-#if __IPHONEOS__
+#if EMSCRIPTEN
+	
+	emscripten_set_main_loop([]() {
+		gWorld.tick();
+		gWorld.draw();
+	}, 60, 1);
+	
+	
+#elif __IPHONEOS__
 
 	SDL_iPhoneSetAnimationCallback(world.window, 1, [](void *context) {
 		gWorld.tick();
