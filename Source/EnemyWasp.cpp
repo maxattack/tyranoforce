@@ -18,26 +18,26 @@
 
 using namespace TyranoForce;
 
-void TyranoForce::EnemyWasp::init(float spawnX) {
-	img = assets.image("wasp");
-	collider.initWithImage(vec(spawnX, -16), img);
-	collider.halfSize *= 0.5f;
-	hp = kHpWasp;
-	firingTimer = expovariate(kWaspSecondsBetweenShots);
+TyranoForce::EnemyWasp::EnemyWasp(float spawnX) :
+EnemyUnit(vec(spawnX, -16), gWorld.images.wasp, kHpWasp),
+firingTimer(expovariate(kWaspSecondsBetweenShots))
+{
+	halfSize *= 0.5f;
 }
 
-void TyranoForce::EnemyWasp::tick(World &world) {
-	collider.pos.y += 35.f * timer.deltaSeconds;
+void TyranoForce::EnemyWasp::tick() {
+	pos.y += 35.f * gWorld.timer.deltaSeconds;
 	
-	firingTimer -= timer.deltaSeconds;
+	firingTimer -= gWorld.timer.deltaSeconds;
 	if (firingTimer < 0) {
 		firingTimer = expovariate(kWaspSecondsBetweenShots);
-		world.spawnEnemyBullet(collider.pos, vec(randomValue(-12.5f, 12.5f), 50.f));
+		gWorld.enemyBullets.alloc(pos, vec(randomValue(-12.5f, 12.5f), 50.f));
 	}
 }
 
 void TyranoForce::EnemyWasp::draw() {
 	float framesPerSecond = 10;
-	int fr = int(timer.seconds * framesPerSecond) % img->nframes;
-	renderer.drawImage(img, collider.pos, fr);
+	auto img = gWorld.images.wasp;
+	int fr = int(gWorld.timer.seconds * framesPerSecond) % img->nframes;
+	gWorld.renderer.drawImage(img, pos, fr);
 }

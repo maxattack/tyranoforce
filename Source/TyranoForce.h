@@ -18,7 +18,7 @@
 #define kScarabSecondsBetweenShots      3.0
 #define kQueenSecondsBetweenShots       4.0
 
-#define kMissileSpeed                   1.25
+#define kMissileSpeed                   40.0
 #define kMissileSpreadDegrees           17.5
 
 #define kHeroInitialLives               3
@@ -48,25 +48,24 @@
 namespace TyranoForce {
 
 	//------------------------------------------------------------
-	// Context (parameters "passed in" from app)
-    
-	extern vec2 canvasSize;
-	extern SDL_Window *window;
-	extern AssetRef assets;
-	extern SpritePlotterRef renderer;
-	extern Timer timer;
-    
-	//------------------------------------------------------------
 	// Input Preprocessor
 	
-	struct Input {
-		bool touchBegan;
-		bool touching;
-		bool touchEnded;
+	class Input {
+	private:
+		vec2 mTouchPosition;
+		bool mTouchBegan;
+		bool mTouching;
+		bool mTouchEnded;
 		
-		vec2 touchPosition;
 		
-		void init();
+	public:
+		
+		vec2 touchPosition() const { return mTouchPosition; }
+		bool touchBegan() const { return mTouchBegan; }
+		bool touching() const { return mTouching; }
+		bool touchEnded() const { return mTouchEnded; }
+		
+		Input();
         void enterFrame();
         bool handleEvent(const SDL_Event &event);
 	};
@@ -74,14 +73,16 @@ namespace TyranoForce {
 	//------------------------------------------------------------
 	// Background / Foreground Scrolling Effects
 
-    struct ParallaxFX {
+    class ParallaxFX {
+	private:
         ImageAsset *bg;
         ImageAsset *midL;
         ImageAsset *midR;
         ImageAsset *topL;
         ImageAsset *topR;
         
-		void init();
+	public:
+		ParallaxFX();
         void drawBackground();
         void drawForeground();
     };
@@ -89,7 +90,8 @@ namespace TyranoForce {
 	//------------------------------------------------------------
 	// Helper View for HUD to animate spawn icons in
 	
-	struct SpawnIconFX {
+	class SpawnIconFX {
+	private:
 		COROUTINE_PARAMETER;
 		int level;
 		float t;
@@ -99,7 +101,9 @@ namespace TyranoForce {
 		ImageAsset *barNib;
 		ImageAsset *spawnLocked[3];
 		
-		void init(int aLevel);
+	public:
+		SpawnIconFX(int aLevel);
+
 		void draw();
 		
 		float xpos();
@@ -112,9 +116,8 @@ namespace TyranoForce {
 	//------------------------------------------------------------
 	// Overlay UI and player input controller
 	
-	struct World;
-	
-	struct HeadsUpDisplay {
+	class HeadsUpDisplay {
+	private:
 		SpawnIconFX icons[4];
 		float arrowPosition;
 		float easedArrowPosition;
@@ -123,13 +126,18 @@ namespace TyranoForce {
 		ImageAsset *dinoFace;
 		ImageAsset *heroFace;
 		bool showPortrait;
-		
-		void init();
+	
+	public:
+		HeadsUpDisplay();
 		void showPortraits() { showPortrait = true; }
 		
 		float actualCharge();
+		float getArrowPosition() const { return arrowPosition; }
+		float getEasedArrowPosition() const { return easedArrowPosition; }
+		float getCharge() const { return charge; }
+		int getChargeLevel() const { return chargeLevel; }
 		
-		void tick(World& world);
+		void tick();
 		void draw();
 	};
 	
@@ -140,14 +148,12 @@ namespace TyranoForce {
 		vec2 pos;
 		vec2 halfSize;
 		
-		void init(vec2 aPos, vec2 aHalfSize) {
-			pos = aPos;
-            halfSize = aHalfSize;
+		Collider(vec2 aPos, vec2 aHalfSize) :
+		pos(aPos), halfSize(aHalfSize) {
         }
         
-        void initWithImage(vec2 aPos, ImageAsset *img) {
-            pos = aPos;
-			halfSize = 0.5f * vec(img->w, img->h);
+        Collider(vec2 aPos, ImageAsset *img) :
+		pos(aPos), halfSize(0.5f * vec(img->w, img->h)) {
 		}
 		
 		bool overlaps(const Collider &c) const {
@@ -161,10 +167,10 @@ namespace TyranoForce {
 	//------------------------------------------------------------
 	// Specialized Game Objects
 	
-    struct EnemyBullet;
+    class EnemyBullet;
     
-	struct Hero {
-        Collider collider;
+	class Hero : public Collider {
+	private:
         ImageAsset *img;
 		COROUTINE_PARAMETER;
 		vec2 speed;
@@ -176,32 +182,33 @@ namespace TyranoForce {
 		bool isActive;
 		int lives;
 		
-		void init();
+	public:
+		Hero();
 		bool flickering() { return flickeringTimer > 0.f; }
 		bool isVulnerable() { return isActive && !flickering(); }
 		
-		bool checkForHit(World& world, EnemyBullet &bullet);
-		void kill(World &world);
+		bool checkForHit(Collider *c);
+		void kill();
 		void resetSpawnPosition();
 		void incrementShieldCount();
 		void incrementPower();
 		void blowUp();
 		void setInactive(float duration);
 		
-		void computeNextMove(World &world, float dt);
+		void computeNextMove(float dt);
 		
-		void tick(World &world);
+		void tick();
 		void draw();
 	};
 	
 	//------------------------------------------------------------
 	
-	struct HeroBullet {
-        Collider collider;
-        ImageAsset *img;
+	class HeroBullet : public Collider {
+	private:
 		vec2 heading;
 		
-		void init(vec2 pos, vec2 heading);
+	public:
+		HeroBullet(vec2 pos, vec2 heading);
 		
 		bool isOutsideGameArea();
 		
@@ -211,12 +218,16 @@ namespace TyranoForce {
 	
 	//------------------------------------------------------------
 	
-	struct Explosion {
-		ImageAsset *asset;
+	class Explosion {
+	private:
 		vec2 pos;
+		bool big;
 		float t;
 		
-		void init(ImageAsset *asset, vec2 pos);
+		ImageAsset *asset() const;
+		
+	public:
+		Explosion(vec2 pos, bool isBig);
 		
 		bool isComplete();
 		void tick();
@@ -225,75 +236,101 @@ namespace TyranoForce {
 	
 	//------------------------------------------------------------
 	
-	struct EnemyUnit {
-        Collider collider;
-        ImageAsset *img;
+	class EnemyUnit : public Collider {
+	protected:
 		int hp;
-		float flickerTime;
 		
-		bool takeDamage(World &world, int damage);
+	public:
+		EnemyUnit(vec2 position, ImageAsset *asset, int hp);
+		
+		bool takeDamage(int damage, bool bigExplosion=true);
 	};
 	
 	//------------------------------------------------------------
 	
-	struct EnemyWasp : EnemyUnit {
+	class EnemyWasp : public EnemyUnit {
+	private:
 		float firingTimer;
 		
-		void init(float spawnX);
-		void tick(World &world);
+	public:
+		EnemyWasp(float spawnX);
+		void tick();
 		void draw();
 	};
 	
 	//------------------------------------------------------------
 	
-	struct EnemySpider : EnemyUnit {
+	class EnemySpider : public EnemyUnit {
+	private:
 		float time;
 		float firingTimer;
 		float restX;
 		float vy;
-		
-		void init(float spawnX);
-		void tick(World &world);
+	
+	public:
+		EnemySpider(float spawnX);
+		void tick();
 		void draw();
 	};
 	
 	//------------------------------------------------------------
 	
-	struct EnemyScarab : EnemyUnit {
+	class EnemyScarab : public EnemyUnit {
+	private:
 		float firingTimer;
-		
-		void init(float spawnX);
-		void tick(World &world);
+	
+	public:
+		EnemyScarab(float spawnX);
+		void tick();
 		void draw();
 	};
 	
 	//------------------------------------------------------------
 	
-	struct EnemyQueen : EnemyUnit {
+	class EnemyQueen : public EnemyUnit {
+	private:
 		struct Turret {
 			vec2 offset;
 			vec2 direction;
 			float t;
 			
 			void init(vec2 offset, vec2 dir);
-			void tick(World &world, EnemyQueen &queen);
+			void tick(EnemyQueen &queen);
 		};
 		
 		Turret turrets[12];
+	
+	public:
 		
-		void init(float spawnX);
-		void tick(World &world);
+		EnemyQueen(float spawnX);
+		void tick();
 		void draw();
 	};
 	
 	//------------------------------------------------------------
 	
-	struct EnemyBullet {
-        Collider collider;
-        ImageAsset *img;
+	class EnemyBullet : public Collider {
+	private:
 		vec2 heading;
+	
+	public:
+		EnemyBullet(vec2 pos, vec2 heading);
 		
-		void init(vec2 pos, vec2 heading);
+		bool isOutsideGameArea();
+		
+		void tick();
+		void draw();
+	};
+	
+	//------------------------------------------------------------
+	
+	class EnemyMissile : public EnemyUnit {
+	private:
+		float radians;
+		vec2 heading;
+	
+	public:
+		EnemyMissile(vec2 pos, float aRadians);
 		
 		bool isOutsideGameArea();
 		
@@ -311,48 +348,78 @@ namespace TyranoForce {
 			EnemySpider *spider;
 			EnemyScarab *scarab;
 			EnemyQueen *queen;
+			EnemyMissile *missile;
 		};
-		World *world;
-		EnemyIterator(World *world);
+		EnemyIterator();
 		bool next();
+		
+		operator EnemyUnit*() { return curr; }
+		EnemyUnit* operator->() { return curr; }
+		EnemyUnit& operator*() { return *curr; }
 	};
 	
 	
 	//------------------------------------------------------------
 	// Facade class for gameplay
 	
-	struct World {
+	class Images {
+	public:
+		ImageAsset *heroBullet;
+		ImageAsset *enemyBullet;
+		ImageAsset *enemyMissile;
+		ImageAsset *smallExplosion;
+		ImageAsset *bigExplosion;
+		ImageAsset *wasp;
+		ImageAsset *spider;
+		ImageAsset *scarab;
+		ImageAsset *queen;
+		ImageAsset *dino;
+		
+		Images();
+	};
+	
+	class World : public Singleton<World> {
+	public:
+		SDL_Window *window;
+		Viewport view;
+		AssetRef assets;
+		Images images;
+		BasicPlotterRef plotter;
+		SpritePlotter renderer;
+		Timer timer;
+		
         Input input;
         ParallaxFX parallax;
 		HeadsUpDisplay hud;
 		Hero hero;
-		CompactPoolWithBuffer<EnemyBullet, 256> enemyBullets;
-		CompactPoolWithBuffer<EnemyWasp, 32> wasps;
-		CompactPoolWithBuffer<EnemySpider, 16> spiders;
-		CompactPoolWithBuffer<EnemyScarab, 8> scarabs;
-		CompactPoolWithBuffer<EnemyQueen, 8> queens;
-		CompactPoolWithBuffer<HeroBullet, 64> heroBullets;
-		CompactPoolWithBuffer<Explosion, 64> explosions;
+		CompactPool<EnemyBullet> enemyBullets;
+		CompactPool<EnemyMissile> enemyMissiles;
+		CompactPool<EnemyWasp> wasps;
+		CompactPool<EnemySpider> spiders;
+		CompactPool<EnemyScarab> scarabs;
+		CompactPool<EnemyQueen> queens;
+		CompactPool<HeroBullet> heroBullets;
+		CompactPool<Explosion> explosions;
 		
-		ImageAsset *dino;
+		bool done;
 		
 		bool anyEnemies() const {
 			return wasps.count() ||
 			       spiders.count() ||
 			       scarabs.count() ||
-			       queens.count();
+			       queens.count() ||
+			       enemyMissiles.count();
 		}
 		
-		void init();
+		World();
 		
 		void draw();
 		void tick();
 		
 		void discharge();
-		void spawnEnemyBullet(vec2 pos, vec2 heading);
-		void spawnHeroBullet(vec2 pos, vec2 heading);
-		void spawnExplosion(vec2 pos, bool isBig);
 	};
 	
 }
+
+#define gWorld TyranoForce::World::getInstance()
 

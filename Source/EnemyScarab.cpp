@@ -18,26 +18,28 @@
 
 using namespace TyranoForce;
 
-void TyranoForce::EnemyScarab::init(float spawnX) {
-	img = assets.image("scarab");
-	collider.initWithImage(vec(spawnX, -32), img);
-	hp = kHpScarab;
-	firingTimer = randomValue() * kScarabSecondsBetweenShots;
+TyranoForce::EnemyScarab::EnemyScarab(float spawnX) :
+EnemyUnit(vec(spawnX, -32), gWorld.images.scarab, kHpScarab),
+firingTimer(randomValue() * kScarabSecondsBetweenShots)
+{
 }
 
-void TyranoForce::EnemyScarab::tick(World &world) {
-	collider.pos.y += 10.f * timer.deltaSeconds;
+void TyranoForce::EnemyScarab::tick() {
+	pos.y += 10.f * gWorld.timer.deltaSeconds;
 	
-	firingTimer -= timer.deltaSeconds;
+	firingTimer -= gWorld.timer.deltaSeconds;
 	if (firingTimer < 0) {
 		firingTimer += kScarabSecondsBetweenShots;
-		// TODO: Missiles
+		
+		gWorld.enemyMissiles.alloc(pos+vec(12,6), (0.5f-0.2f)*M_PI);
+		gWorld.enemyMissiles.alloc(pos+vec(-12,6), (0.5f+0.2f)*M_PI);
 	}
 	
 }
 
 void TyranoForce::EnemyScarab::draw() {
 	float framesPerSecond = 10;
-	int fr = int(timer.seconds * framesPerSecond) % img->nframes;
-	renderer.drawImage(img, collider.pos, fr);
+	auto img = gWorld.images.scarab;
+	int fr = int(gWorld.timer.seconds * framesPerSecond) % img->nframes;
+	gWorld.renderer.drawImage(img, pos, fr);
 }

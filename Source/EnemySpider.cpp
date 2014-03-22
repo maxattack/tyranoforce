@@ -18,43 +18,41 @@
 
 using namespace TyranoForce;
 
-void TyranoForce::EnemySpider::init(float spawnX) {
-	img = assets.image("spider");
-	collider.initWithImage(vec(spawnX, -16), img);
-	time = M_TAU * randomValue();
-	firingTimer = randomValue() * kSpiderSecondsBetweenShots;
-	
-	restX = spawnX - 28.f * sin(
-		0.4f * M_TAU * (timer.seconds + time)
-	);
-	
-	vy = 175;
-	hp = kHpSpider;
-	
+TyranoForce::EnemySpider::EnemySpider(float spawnX) :
+EnemyUnit(vec(spawnX, -16), gWorld.images.spider, kHpSpider),
+time(M_TAU * randomValue()),
+firingTimer(randomValue() * kSpiderSecondsBetweenShots),
+restX(spawnX - 28.f * sinf(
+  0.4f * M_TAU * (gWorld.timer.seconds + time)
+)),
+vy(175)
+{
 }
 
-void TyranoForce::EnemySpider::tick(World &world) {
+void TyranoForce::EnemySpider::tick() {
 	// travel down and slow down
-	collider.pos.y += vy * timer.deltaSeconds;
+	pos.y += vy * gWorld.timer.deltaSeconds;
 	vy += 0.06 * (12.5f - vy); // WARNING: FRAMERATE-DEPENDENT
 	
 	// zig-zag
-	collider.pos.x = restX + 28.f * sin(
-		0.4f * M_TAU * (timer.seconds + time)
+	pos.x = restX + 28.f * sin(
+		0.4f * M_TAU * (gWorld.timer.seconds + time)
 	);
 	
 	// firing solution
-	firingTimer -= timer.deltaSeconds;
+	firingTimer -= gWorld.timer.deltaSeconds;
 	if (firingTimer < 0) {
 		firingTimer += kSpiderSecondsBetweenShots;
-		world.spawnEnemyBullet(collider.pos, vec(-25.f, 50.f));
-		world.spawnEnemyBullet(collider.pos, vec(0, 50.f));
-		world.spawnEnemyBullet(collider.pos, vec(25.f, 50.f));
+		gWorld.enemyBullets.alloc(pos, vec(-25.f, 50.f));
+		gWorld.enemyBullets.alloc(pos, vec(0, 50.f));
+		gWorld.enemyBullets.alloc(pos, vec(25.f, 50.f));
 	}
 }
 
 void TyranoForce::EnemySpider::draw() {
 	float framesPerSecond = 10;
-	int fr = int(timer.seconds * framesPerSecond) % img->nframes;
-	renderer.drawImage(img, collider.pos, fr);
+	int fr =
+		int(gWorld.timer.seconds * framesPerSecond) %
+		gWorld.images.spider->nframes;
+	gWorld.renderer.drawImage(gWorld.images.spider, pos, fr);
 }

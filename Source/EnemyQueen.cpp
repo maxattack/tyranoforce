@@ -24,19 +24,17 @@ void TyranoForce::EnemyQueen::Turret::init(vec2 aOffset, vec2 dir) {
 	t = expovariate(kQueenSecondsBetweenShots);
 }
 
-void TyranoForce::EnemyQueen::Turret::tick(World &world, EnemyQueen &queen) {
-	t -= timer.deltaSeconds;
+void TyranoForce::EnemyQueen::Turret::tick(EnemyQueen &queen) {
+	t -= gWorld.timer.deltaSeconds;
 	if (t < 0) {
 		t = expovariate(kQueenSecondsBetweenShots);
-		world.spawnEnemyBullet(queen.collider.pos + offset, direction);
+		gWorld.enemyBullets.alloc(queen.pos + offset, direction);
 	}
 }
 
-void TyranoForce::EnemyQueen::init(float spawnX) {
-	img = assets.image("queen");
-	collider.initWithImage(vec(spawnX, -48), img);
-	hp = kHpQueen;
-	
+TyranoForce::EnemyQueen::EnemyQueen(float spawnX) :
+EnemyUnit(vec(spawnX, -48), gWorld.images.queen, kHpQueen)
+{
 	int n = arraysize(turrets)/4;
 	int pad = 14;
 	for(int i=0; i<arraysize(turrets)/2; ++i) {
@@ -46,16 +44,17 @@ void TyranoForce::EnemyQueen::init(float spawnX) {
 }
 
 
-void TyranoForce::EnemyQueen::tick(World &world) {
-	collider.pos.y += 10.f * timer.deltaSeconds;
+void TyranoForce::EnemyQueen::tick() {
+	pos.y += 10.f * gWorld.timer.deltaSeconds;
 	for(int i=0; i<arraysize(turrets); ++i) {
-		turrets[i].tick(world, *this);
+		turrets[i].tick(*this);
 	}
 	
 }
 
 void TyranoForce::EnemyQueen::draw() {
 	float framesPerSecond = 10;
-	int fr = int(timer.seconds * framesPerSecond) % img->nframes;
-	renderer.drawImage(img, collider.pos, fr);
+	auto img = gWorld.images.queen;
+	int fr = int(gWorld.timer.seconds * framesPerSecond) % img->nframes;
+	gWorld.renderer.drawImage(img, pos, fr);
 }

@@ -25,7 +25,6 @@
 		50432A891894975A001BFA6D /* ParallaxFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50432A7A1894975A001BFA6D /* ParallaxFX.cpp */; };
 		50432A8A1894975A001BFA6D /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50432A7C1894975A001BFA6D /* World.cpp */; };
 		50432A9818949763001BFA6D /* AssetBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50432A8B18949763001BFA6D /* AssetBundle.cpp */; };
-		50432A9918949763001BFA6D /* CirclePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50432A8C18949763001BFA6D /* CirclePlotter.cpp */; };
 		50432A9A18949763001BFA6D /* CollisionContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50432A8D18949763001BFA6D /* CollisionContext.cpp */; };
 		50432A9B18949763001BFA6D /* FkContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50432A8E18949763001BFA6D /* FkContext.cpp */; };
 		50432A9D18949763001BFA6D /* LinePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50432A9018949763001BFA6D /* LinePlotter.cpp */; };
@@ -47,6 +46,15 @@
 		50432AE11894A5F4001BFA6D /* sv_ttt.xm in Resources */ = {isa = PBXBuildFile; fileRef = 50432ADF1894A5F4001BFA6D /* sv_ttt.xm */; };
 		50432AEC1894CED1001BFA6D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50432AE71894CED1001BFA6D /* Default-568h@2x.png */; };
 		50432AEE1894CED1001BFA6D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50432AE91894CED1001BFA6D /* Default@2x.png */; };
+		5064D88E18DD4C7600B5EBC8 /* BasicPlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D88718DD4C7600B5EBC8 /* BasicPlotter.cpp */; };
+		5064D88F18DD4C7600B5EBC8 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D88818DD4C7600B5EBC8 /* lodepng.cpp */; };
+		5064D89018DD4C7600B5EBC8 /* PostProcessingFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D88918DD4C7600B5EBC8 /* PostProcessingFX.cpp */; };
+		5064D89118DD4C7600B5EBC8 /* SimplexNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D88A18DD4C7600B5EBC8 /* SimplexNoise.cpp */; };
+		5064D89218DD4C7600B5EBC8 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D88B18DD4C7600B5EBC8 /* Timer.cpp */; };
+		5064D89318DD4C7600B5EBC8 /* TrailBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D88C18DD4C7600B5EBC8 /* TrailBatch.cpp */; };
+		5064D89418DD4C7600B5EBC8 /* Viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D88D18DD4C7600B5EBC8 /* Viewport.cpp */; };
+		5064D89D18DD6AF600B5EBC8 /* EnemyMissile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D89B18DD6AF600B5EBC8 /* EnemyMissile.cpp */; };
+		5064D89E18DD6AF600B5EBC8 /* Images.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D89C18DD6AF600B5EBC8 /* Images.cpp */; };
 		50E288011895006500DAC178 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 50E288001895006500DAC178 /* Icon-120.png */; };
 /* End PBXBuildFile section */
 
@@ -104,10 +112,8 @@
 		50432A7B1894975A001BFA6D /* TyranoForce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyranoForce.h; sourceTree = "<group>"; };
 		50432A7C1894975A001BFA6D /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		50432A8B18949763001BFA6D /* AssetBundle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetBundle.cpp; sourceTree = "<group>"; };
-		50432A8C18949763001BFA6D /* CirclePlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CirclePlotter.cpp; sourceTree = "<group>"; };
 		50432A8D18949763001BFA6D /* CollisionContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionContext.cpp; sourceTree = "<group>"; };
 		50432A8E18949763001BFA6D /* FkContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FkContext.cpp; sourceTree = "<group>"; };
-		50432A8F18949763001BFA6D /* glew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glew.c; sourceTree = "<group>"; };
 		50432A9018949763001BFA6D /* LinePlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinePlotter.cpp; sourceTree = "<group>"; };
 		50432A9118949763001BFA6D /* SampleAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleAsset.cpp; sourceTree = "<group>"; };
 		50432A9218949763001BFA6D /* SplinePlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplinePlotter.cpp; sourceTree = "<group>"; };
@@ -128,6 +134,15 @@
 		50432ADF1894A5F4001BFA6D /* sv_ttt.xm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sv_ttt.xm; sourceTree = "<group>"; };
 		50432AE71894CED1001BFA6D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		50432AE91894CED1001BFA6D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		5064D88718DD4C7600B5EBC8 /* BasicPlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlotter.cpp; sourceTree = "<group>"; };
+		5064D88818DD4C7600B5EBC8 /* lodepng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lodepng.cpp; sourceTree = "<group>"; };
+		5064D88918DD4C7600B5EBC8 /* PostProcessingFX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostProcessingFX.cpp; sourceTree = "<group>"; };
+		5064D88A18DD4C7600B5EBC8 /* SimplexNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplexNoise.cpp; sourceTree = "<group>"; };
+		5064D88B18DD4C7600B5EBC8 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		5064D88C18DD4C7600B5EBC8 /* TrailBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrailBatch.cpp; sourceTree = "<group>"; };
+		5064D88D18DD4C7600B5EBC8 /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
+		5064D89B18DD6AF600B5EBC8 /* EnemyMissile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyMissile.cpp; sourceTree = "<group>"; };
+		5064D89C18DD6AF600B5EBC8 /* Images.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Images.cpp; sourceTree = "<group>"; };
 		50E288001895006500DAC178 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -207,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				50432A6E1894975A001BFA6D /* EnemyBullet.cpp */,
+				5064D89B18DD6AF600B5EBC8 /* EnemyMissile.cpp */,
 				50432A6F1894975A001BFA6D /* EnemyQueen.cpp */,
 				50432A701894975A001BFA6D /* EnemyScarab.cpp */,
 				50432A711894975A001BFA6D /* EnemySpider.cpp */,
@@ -216,6 +232,7 @@
 				50432A751894975A001BFA6D /* HeadsUpDisplay.cpp */,
 				50432A761894975A001BFA6D /* Hero.cpp */,
 				50432A771894975A001BFA6D /* HeroBullet.cpp */,
+				5064D89C18DD6AF600B5EBC8 /* Images.cpp */,
 				50432A781894975A001BFA6D /* Input.cpp */,
 				50432A791894975A001BFA6D /* Main.cpp */,
 				50432A7A1894975A001BFA6D /* ParallaxFX.cpp */,
@@ -229,11 +246,16 @@
 		50432A6D18949742001BFA6D /* LittlePolygon */ = {
 			isa = PBXGroup;
 			children = (
+				5064D88718DD4C7600B5EBC8 /* BasicPlotter.cpp */,
+				5064D88818DD4C7600B5EBC8 /* lodepng.cpp */,
+				5064D88918DD4C7600B5EBC8 /* PostProcessingFX.cpp */,
+				5064D88A18DD4C7600B5EBC8 /* SimplexNoise.cpp */,
+				5064D88B18DD4C7600B5EBC8 /* Timer.cpp */,
+				5064D88C18DD4C7600B5EBC8 /* TrailBatch.cpp */,
+				5064D88D18DD4C7600B5EBC8 /* Viewport.cpp */,
 				50432A8B18949763001BFA6D /* AssetBundle.cpp */,
-				50432A8C18949763001BFA6D /* CirclePlotter.cpp */,
 				50432A8D18949763001BFA6D /* CollisionContext.cpp */,
 				50432A8E18949763001BFA6D /* FkContext.cpp */,
-				50432A8F18949763001BFA6D /* glew.c */,
 				50432A9018949763001BFA6D /* LinePlotter.cpp */,
 				50432A9118949763001BFA6D /* SampleAsset.cpp */,
 				50432A9218949763001BFA6D /* SplinePlotter.cpp */,
@@ -376,18 +398,26 @@
 				50432A851894975A001BFA6D /* Hero.cpp in Sources */,
 				50432A9A18949763001BFA6D /* CollisionContext.cpp in Sources */,
 				50432AA018949763001BFA6D /* SpriteBatch.cpp in Sources */,
+				5064D89218DD4C7600B5EBC8 /* Timer.cpp in Sources */,
 				50432A9D18949763001BFA6D /* LinePlotter.cpp in Sources */,
 				50432A7D1894975A001BFA6D /* EnemyBullet.cpp in Sources */,
 				50432A821894975A001BFA6D /* EnemyWasp.cpp in Sources */,
+				5064D89018DD4C7600B5EBC8 /* PostProcessingFX.cpp in Sources */,
+				5064D89118DD4C7600B5EBC8 /* SimplexNoise.cpp in Sources */,
+				5064D88F18DD4C7600B5EBC8 /* lodepng.cpp in Sources */,
 				50432A9818949763001BFA6D /* AssetBundle.cpp in Sources */,
 				50432A871894975A001BFA6D /* Input.cpp in Sources */,
 				50432A861894975A001BFA6D /* HeroBullet.cpp in Sources */,
+				5064D89318DD4C7600B5EBC8 /* TrailBatch.cpp in Sources */,
+				5064D88E18DD4C7600B5EBC8 /* BasicPlotter.cpp in Sources */,
 				50432A801894975A001BFA6D /* EnemySpider.cpp in Sources */,
 				50432AA118949763001BFA6D /* SpritePlotter.cpp in Sources */,
 				50432A9B18949763001BFA6D /* FkContext.cpp in Sources */,
 				50432A881894975A001BFA6D /* Main.cpp in Sources */,
 				50432A841894975A001BFA6D /* HeadsUpDisplay.cpp in Sources */,
 				50432A8A1894975A001BFA6D /* World.cpp in Sources */,
+				5064D89E18DD6AF600B5EBC8 /* Images.cpp in Sources */,
+				5064D89D18DD6AF600B5EBC8 /* EnemyMissile.cpp in Sources */,
 				50432A7E1894975A001BFA6D /* EnemyQueen.cpp in Sources */,
 				50432A9F18949763001BFA6D /* SplinePlotter.cpp in Sources */,
 				50432A891894975A001BFA6D /* ParallaxFX.cpp in Sources */,
@@ -395,8 +425,8 @@
 				50432A9E18949763001BFA6D /* SampleAsset.cpp in Sources */,
 				50432A7F1894975A001BFA6D /* EnemyScarab.cpp in Sources */,
 				50432A831894975A001BFA6D /* Explosion.cpp in Sources */,
-				50432A9918949763001BFA6D /* CirclePlotter.cpp in Sources */,
 				50432AA418949763001BFA6D /* utils.cpp in Sources */,
+				5064D89418DD4C7600B5EBC8 /* Viewport.cpp in Sources */,
 				50432A811894975A001BFA6D /* EnemyUnit.cpp in Sources */,
 				50432AA218949763001BFA6D /* TextureAsset.cpp in Sources */,
 			);

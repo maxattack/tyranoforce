@@ -18,33 +18,33 @@
 
 using namespace TyranoForce;
 
-void TyranoForce::ParallaxFX::init() {
-	bg = assets.image("background");
-	midL = assets.image("middleLeft");
-	midR = assets.image("middleRight");
-	topL = assets.image("topLeft");
-	topR = assets.image("topRight");
+TyranoForce::ParallaxFX::ParallaxFX() :
+bg(gWorld.assets.image("background")),
+midL(gWorld.assets.image("middleLeft")),
+midR(gWorld.assets.image("middleRight")),
+topL(gWorld.assets.image("topLeft")),
+topR(gWorld.assets.image("topRight")) {
 }
 
 void TyranoForce::ParallaxFX::drawBackground() {
-	renderer.drawImage(bg, vec(0,0));
-	renderer.drawImage(bg, vec(0,bg->h));
-	double y = fmod(64 * timer.seconds, 240);
-	renderer.drawImage(midL, vec(0, y));
-	renderer.drawImage(midL, vec(0, y-midL->h));
-	renderer.drawImage(midL, vec(0, y-2*midL->h));
-	renderer.drawImage(midR, vec(canvasSize.x, y));
-	renderer.drawImage(midR, vec(canvasSize.x, y-midR->h));
-	renderer.drawImage(midR, vec(canvasSize.x, y+midR->h));
+	gWorld.renderer.drawImage(bg, vec(0,0));
+	gWorld.renderer.drawImage(bg, vec(0,bg->h));
+	double y = fmod(64 * gWorld.timer.seconds, 240);
+	gWorld.renderer.drawImage(midL, vec(0, y));
+	gWorld.renderer.drawImage(midL, vec(0, y-midL->h));
+	gWorld.renderer.drawImage(midL, vec(0, y-2*midL->h));
+	gWorld.renderer.drawImage(midR, vec(gWorld.view.width(), y));
+	gWorld.renderer.drawImage(midR, vec(gWorld.view.width(), y-midR->h));
+	gWorld.renderer.drawImage(midR, vec(gWorld.view.width(), y+midR->h));
 }
 
 void TyranoForce::ParallaxFX::drawForeground() {
-	double y = fmod(300.0 * timer.seconds, topL->h);
-	renderer.drawImage(topL, vec(0, y));
-	renderer.drawImage(topL, vec(0, y-topL->h));
-	renderer.drawImage(topL, vec(0, y+topL->h));
-	renderer.drawImage(topR, vec(canvasSize.x, y));
-	renderer.drawImage(topR, vec(canvasSize.x, y-topR->h));
-	renderer.drawImage(topR, vec(canvasSize.x, y+topR->h));
+	double y = fmod(300.0 * gWorld.timer.seconds, topL->h);
+	gWorld.renderer.drawImage(topL, vec(0, y));
+	gWorld.renderer.drawImage(topL, vec(0, y-topL->h));
+	gWorld.renderer.drawImage(topL, vec(0, y+topL->h));
+	gWorld.renderer.drawImage(topR, vec(gWorld.view.width(), y));
+	gWorld.renderer.drawImage(topR, vec(gWorld.view.width(), y-topR->h));
+	gWorld.renderer.drawImage(topR, vec(gWorld.view.width(), y+topR->h));
 }
 

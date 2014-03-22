@@ -18,10 +18,16 @@
 
 using namespace TyranoForce;
 
-bool TyranoForce::EnemyUnit::takeDamage(World &world, int damage) {
+TyranoForce::EnemyUnit::EnemyUnit(vec2 position, ImageAsset *aimg, int ahp) :
+Collider(position, aimg),
+hp(ahp)
+{
+}
+
+bool TyranoForce::EnemyUnit::takeDamage(int damage, bool bigExplosion) {
 	hp -= damage;
 	if (hp <= 0) {
-		world.spawnExplosion(collider.pos, true);
+		gWorld.explosions.alloc(pos, bigExplosion);
 		return true;
 	}
 	return false;

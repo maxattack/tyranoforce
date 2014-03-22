@@ -21,40 +21,41 @@ using namespace TyranoForce;
 #define NIB_X           10
 #define NIB_OFFSET_Y    15
 
-void TyranoForce::SpawnIconFX::init(int alevel) {
-	level = alevel;
+TyranoForce::SpawnIconFX::SpawnIconFX(int aLevel) :
+level(aLevel),
+barNib(gWorld.assets.image("barNib"))
+{
 	COROUTINE_DISABLE;
 	
 	switch(level) {
 		case 1:
-			activeIcon = assets.image("activeIconA");
-			inactiveIcon = assets.image("inactiveIconA");
+			activeIcon = gWorld.assets.image("activeIconA");
+			inactiveIcon = gWorld.assets.image("inactiveIconA");
 			break;
 		case 2:
-			activeIcon = assets.image("activeIconB");
-			inactiveIcon = assets.image("inactiveIconB");
+			activeIcon = gWorld.assets.image("activeIconB");
+			inactiveIcon = gWorld.assets.image("inactiveIconB");
 			break;
 		case 3:
-			activeIcon = assets.image("activeIconC");
-			inactiveIcon = assets.image("inactiveIconC");
+			activeIcon = gWorld.assets.image("activeIconC");
+			inactiveIcon = gWorld.assets.image("inactiveIconC");
 			break;
 		default:
-			activeIcon = assets.image("activeIconD");
-			inactiveIcon = assets.image("inactiveIconD");
+			activeIcon = gWorld.assets.image("activeIconD");
+			inactiveIcon = gWorld.assets.image("inactiveIconD");
 			break;
 	}
 	
-	barNib = assets.image("barNib");
-	spawnLocked[0] = assets.image("spawnLocked0");
-	spawnLocked[1] = assets.image("spawnLocked1");
-	spawnLocked[2] = assets.image("spawnLocked2");
+	spawnLocked[0] = gWorld.assets.image("spawnLocked0");
+	spawnLocked[1] = gWorld.assets.image("spawnLocked1");
+	spawnLocked[2] = gWorld.assets.image("spawnLocked2");
 	
 }
 
 
 float TyranoForce::SpawnIconFX::xpos() {
-	float dx = canvasSize.x/4;
-	return dx*level - canvasSize.x/8;
+	float dx = gWorld.view.width()/4;
+	return dx*level - gWorld.view.width()/8;
 }
 
 ImageAsset *TyranoForce::SpawnIconFX::img() {
@@ -65,12 +66,12 @@ void TyranoForce::SpawnIconFX::draw() {
 	COROUTINE_BEGIN;
 	
 	// transition in
-	for(t=0; t<0.15f; t+=timer.deltaSeconds) {
+	for(t=0; t<0.15f; t+=gWorld.timer.deltaSeconds) {
 		{
 			int frame = int(3 * t/0.15f);
 			float pos = xpos();
-			renderer.drawImage(barNib, vec(pos-16, canvasSize.y+1));
-			renderer.drawImage(spawnLocked[frame], vec(pos, canvasSize.y-2));
+			gWorld.renderer.drawImage(barNib, vec(pos-16, gWorld.view.height()+1));
+			gWorld.renderer.drawImage(spawnLocked[frame], vec(pos, gWorld.view.height()-2));
 		}
 		COROUTINE_YIELD;
 	}
@@ -79,8 +80,8 @@ void TyranoForce::SpawnIconFX::draw() {
 	for(;;) {
 		{
 			float pos = xpos();
-			renderer.drawImage(barNib, vec(pos-16, canvasSize.y+1));
-			renderer.drawImage(img(), vec(pos, canvasSize.y-2));
+			gWorld.renderer.drawImage(barNib, vec(pos-16, gWorld.view.height()+1));
+			gWorld.renderer.drawImage(img(), vec(pos, gWorld.view.height()-2));
 		}
 		COROUTINE_YIELD;
 	}
@@ -90,38 +91,37 @@ void TyranoForce::SpawnIconFX::draw() {
 
 //----------------------------------------------------------------------------
 
-void TyranoForce::HeadsUpDisplay::init() {
-
-	arrowPosition = easedArrowPosition = 0.5f * canvasSize.x;
-	charge = 0.f;
-	chargeLevel = 0;
-	showPortrait = false;
-	for(int i=0; i<4; ++i) {
-		icons[i].init(i+1);
-	}
-	heroFace = assets.image("heroFace");
-	dinoFace = assets.image("dinoFace");
+TyranoForce::HeadsUpDisplay::HeadsUpDisplay() :
+icons{SpawnIconFX(1), SpawnIconFX(2), SpawnIconFX(3), SpawnIconFX(3)},
+arrowPosition((0.5f * gWorld.view.width())),
+easedArrowPosition(arrowPosition),
+charge(0.0f),
+chargeLevel(0),
+showPortrait(false),
+heroFace(gWorld.assets.image("heroFace")),
+dinoFace(gWorld.assets.image("dinoFace"))
+{
 }
 
 float TyranoForce::HeadsUpDisplay::actualCharge() {
 	return easeOut2(charge);
 }
 
-void TyranoForce::HeadsUpDisplay::tick(World& world) {
+void TyranoForce::HeadsUpDisplay::tick() {
 	
-	if (world.input.touching) {
-		arrowPosition = clamp(world.input.touchPosition.x, 16, canvasSize.x-16);
+	if (gWorld.input.touching()) {
+		arrowPosition = clamp(gWorld.input.touchPosition().x, 16, gWorld.view.width()-16);
 	}
 	
 	easedArrowPosition = easeTowards(
 		easedArrowPosition,
 		arrowPosition,
 		0.2f,
-		clamp(60 * timer.deltaSeconds, 0, 0.999f)
+		gWorld.timer.deltaSeconds
 	);
 
 	float secondsToCharge = 6;
-	charge = clamp(charge + timer.deltaSeconds/secondsToCharge);
+	charge = clamp(charge + gWorld.timer.deltaSeconds/secondsToCharge);
 	float ch = actualCharge();
 	int prevLevel = chargeLevel;
 	if (ch > 0.99f) {
@@ -142,17 +142,17 @@ void TyranoForce::HeadsUpDisplay::tick(World& world) {
 		}
 		icons[prevLevel].show();
 		switch(chargeLevel) {
-			case 1: assets.sample("charging1")->play(); break;
-			case 2: assets.sample("charging2")->play(); break;
-			case 3: assets.sample("charging3")->play(); break;
-			case 4: assets.sample("charging4")->play(); break;
+			case 1: gWorld.assets.sample("charging1")->play(); break;
+			case 2: gWorld.assets.sample("charging2")->play(); break;
+			case 3: gWorld.assets.sample("charging3")->play(); break;
+			case 4: gWorld.assets.sample("charging4")->play(); break;
 		}
 	}
 	
-	if (world.input.touchEnded) {
-		world.discharge();
+	if (gWorld.input.touchEnded()) {
+		gWorld.discharge();
 		if (chargeLevel) {
-			assets.sample("spawn")->play();
+			gWorld.assets.sample("spawn")->play();
 			for(int i=0; i<chargeLevel; ++i) {
 				icons[i].hide();
 			}
@@ -160,20 +160,26 @@ void TyranoForce::HeadsUpDisplay::tick(World& world) {
 		}
 		charge = 0;
 	}
-	
-//	charge = easeTowards(charge, 0.f, 0.5f, 60.f * deltaTime);
+
 }
 
 void TyranoForce::HeadsUpDisplay::draw() {
 	// draw the UI
 	if (showPortrait) {
-		renderer.drawImage(dinoFace, vec(0, 4));
-		renderer.drawImage(heroFace, vec(canvasSize.x, 4));
+		gWorld.renderer.drawImage(dinoFace, vec(0, 4));
+		gWorld.renderer.drawImage(heroFace, vec(gWorld.view.width(), 4));
 	}
 	
 	for(int i=0; i<4; ++i) {
 		icons[i].draw();
 	}
-	renderer.drawLabelCentered(assets.font("flixel"), vec(0.5f*canvasSize.x, canvasSize.y-16), rgb(0xffffff), "60s Remaining");
+//	gWorld.renderer.drawLabelCentered(
+//		gWorld.assets.font("flixel"),
+//		vec(0.5f*gWorld.view.width(), gWorld.view.height()-16),
+//		rgb(0xffffff),
+//		"60s Remaining"
+//	);
 }
+
+
 

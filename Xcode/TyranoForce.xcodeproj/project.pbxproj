@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5064D87D18DD01F400B5EBC8 /* BasicPlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D87618DD01F400B5EBC8 /* BasicPlotter.cpp */; };
+		5064D87E18DD01F400B5EBC8 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D87718DD01F400B5EBC8 /* lodepng.cpp */; };
+		5064D87F18DD01F400B5EBC8 /* PostProcessingFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D87818DD01F400B5EBC8 /* PostProcessingFX.cpp */; };
+		5064D88018DD01F400B5EBC8 /* SimplexNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D87918DD01F400B5EBC8 /* SimplexNoise.cpp */; };
+		5064D88118DD01F400B5EBC8 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D87A18DD01F400B5EBC8 /* Timer.cpp */; };
+		5064D88218DD01F400B5EBC8 /* TrailBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D87B18DD01F400B5EBC8 /* TrailBatch.cpp */; };
+		5064D88318DD01F400B5EBC8 /* Viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D87C18DD01F400B5EBC8 /* Viewport.cpp */; };
+		5064D89618DD5B9600B5EBC8 /* Images.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D89518DD5B9600B5EBC8 /* Images.cpp */; };
+		5064D89818DD5FBC00B5EBC8 /* EnemyMissile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5064D89718DD5FBC00B5EBC8 /* EnemyMissile.cpp */; };
 		50C269D918945E3A00E67DBD /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269CF1894599000E67DBD /* SDL2_mixer.framework */; };
 		50C269DA18945E3A00E67DBD /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C269D01894599000E67DBD /* SDL2.framework */; };
 		50C269EA189477EE00E67DBD /* AssetBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269DD189477EE00E67DBD /* AssetBundle.cpp */; };
-		50C269EB189477EE00E67DBD /* CirclePlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269DE189477EE00E67DBD /* CirclePlotter.cpp */; };
 		50C269EC189477EE00E67DBD /* CollisionContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269DF189477EE00E67DBD /* CollisionContext.cpp */; };
 		50C269ED189477EE00E67DBD /* FkContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E0189477EE00E67DBD /* FkContext.cpp */; };
 		50C269EE189477EE00E67DBD /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = 50C269E1189477EE00E67DBD /* glew.c */; };
@@ -47,10 +55,18 @@
 /* Begin PBXFileReference section */
 		50432AF61894D18D001BFA6D /* TyranoForce-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TyranoForce-Info.plist"; sourceTree = SOURCE_ROOT; };
 		50432AF71894D18D001BFA6D /* TyranoForce-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyranoForce-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		5064D87618DD01F400B5EBC8 /* BasicPlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlotter.cpp; sourceTree = "<group>"; };
+		5064D87718DD01F400B5EBC8 /* lodepng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lodepng.cpp; sourceTree = "<group>"; };
+		5064D87818DD01F400B5EBC8 /* PostProcessingFX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostProcessingFX.cpp; sourceTree = "<group>"; };
+		5064D87918DD01F400B5EBC8 /* SimplexNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplexNoise.cpp; sourceTree = "<group>"; };
+		5064D87A18DD01F400B5EBC8 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		5064D87B18DD01F400B5EBC8 /* TrailBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrailBatch.cpp; sourceTree = "<group>"; };
+		5064D87C18DD01F400B5EBC8 /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
+		5064D89518DD5B9600B5EBC8 /* Images.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Images.cpp; sourceTree = "<group>"; };
+		5064D89718DD5FBC00B5EBC8 /* EnemyMissile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyMissile.cpp; sourceTree = "<group>"; };
 		50C269CF1894599000E67DBD /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2_mixer.framework"; sourceTree = "<group>"; };
 		50C269D01894599000E67DBD /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = "../../tyranoforce/little-polygon/dependencies/macos/SDL2.framework"; sourceTree = "<group>"; };
 		50C269DD189477EE00E67DBD /* AssetBundle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetBundle.cpp; sourceTree = "<group>"; };
-		50C269DE189477EE00E67DBD /* CirclePlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CirclePlotter.cpp; sourceTree = "<group>"; };
 		50C269DF189477EE00E67DBD /* CollisionContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionContext.cpp; sourceTree = "<group>"; };
 		50C269E0189477EE00E67DBD /* FkContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FkContext.cpp; sourceTree = "<group>"; };
 		50C269E1189477EE00E67DBD /* glew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glew.c; sourceTree = "<group>"; };
@@ -109,18 +125,24 @@
 			isa = PBXGroup;
 			children = (
 				50C269DD189477EE00E67DBD /* AssetBundle.cpp */,
-				50C269DE189477EE00E67DBD /* CirclePlotter.cpp */,
+				5064D87618DD01F400B5EBC8 /* BasicPlotter.cpp */,
 				50C269DF189477EE00E67DBD /* CollisionContext.cpp */,
 				50C269E0189477EE00E67DBD /* FkContext.cpp */,
 				50C269E1189477EE00E67DBD /* glew.c */,
 				50C269E2189477EE00E67DBD /* LinePlotter.cpp */,
+				5064D87718DD01F400B5EBC8 /* lodepng.cpp */,
+				5064D87818DD01F400B5EBC8 /* PostProcessingFX.cpp */,
 				50C269E3189477EE00E67DBD /* SampleAsset.cpp */,
+				5064D87918DD01F400B5EBC8 /* SimplexNoise.cpp */,
 				50C269E4189477EE00E67DBD /* SplinePlotter.cpp */,
 				50C269E5189477EE00E67DBD /* SpriteBatch.cpp */,
 				50C269E6189477EE00E67DBD /* SpritePlotter.cpp */,
 				50C269E7189477EE00E67DBD /* TextureAsset.cpp */,
 				50C269E8189477EE00E67DBD /* TilemapAsset.cpp */,
+				5064D87A18DD01F400B5EBC8 /* Timer.cpp */,
+				5064D87B18DD01F400B5EBC8 /* TrailBatch.cpp */,
 				50C269E9189477EE00E67DBD /* utils.cpp */,
+				5064D87C18DD01F400B5EBC8 /* Viewport.cpp */,
 			);
 			name = "Little Polygon";
 			path = "../little-polygon/src";
@@ -183,8 +205,8 @@
 		50C840831890758A007FA8B8 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				50C8409518907693007FA8B8 /* TyranoForce.h */,
 				50C8408418907693007FA8B8 /* EnemyBullet.cpp */,
+				5064D89718DD5FBC00B5EBC8 /* EnemyMissile.cpp */,
 				50C8408518907693007FA8B8 /* EnemyQueen.cpp */,
 				50C8408618907693007FA8B8 /* EnemyScarab.cpp */,
 				50C8408718907693007FA8B8 /* EnemySpider.cpp */,
@@ -194,9 +216,11 @@
 				50C8408D18907693007FA8B8 /* HeadsUpDisplay.cpp */,
 				50C8408E18907693007FA8B8 /* Hero.cpp */,
 				50C8408F18907693007FA8B8 /* HeroBullet.cpp */,
-				50C8409018907693007FA8B8 /* Main.cpp */,
+				5064D89518DD5B9600B5EBC8 /* Images.cpp */,
 				50C8409118907693007FA8B8 /* Input.cpp */,
+				50C8409018907693007FA8B8 /* Main.cpp */,
 				50C8409418907693007FA8B8 /* ParallaxFX.cpp */,
+				50C8409518907693007FA8B8 /* TyranoForce.h */,
 				50C8409618907693007FA8B8 /* World.cpp */,
 			);
 			name = Source;
@@ -279,20 +303,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C840A518907693007FA8B8 /* ParallaxFX.cpp in Sources */,
+				5064D88318DD01F400B5EBC8 /* Viewport.cpp in Sources */,
 				50C269EC189477EE00E67DBD /* CollisionContext.cpp in Sources */,
 				50C269F2189477EE00E67DBD /* SpriteBatch.cpp in Sources */,
+				5064D87D18DD01F400B5EBC8 /* BasicPlotter.cpp in Sources */,
+				5064D89818DD5FBC00B5EBC8 /* EnemyMissile.cpp in Sources */,
 				50C269EF189477EE00E67DBD /* LinePlotter.cpp in Sources */,
 				50C8409718907693007FA8B8 /* EnemyBullet.cpp in Sources */,
 				50C269EE189477EE00E67DBD /* glew.c in Sources */,
+				5064D88018DD01F400B5EBC8 /* SimplexNoise.cpp in Sources */,
 				50C840A618907693007FA8B8 /* World.cpp in Sources */,
 				50C269EA189477EE00E67DBD /* AssetBundle.cpp in Sources */,
 				50C8409C18907693007FA8B8 /* EnemyWasp.cpp in Sources */,
 				50C8409F18907693007FA8B8 /* HeadsUpDisplay.cpp in Sources */,
 				50C840A118907693007FA8B8 /* HeroBullet.cpp in Sources */,
 				50C269F3189477EE00E67DBD /* SpritePlotter.cpp in Sources */,
+				5064D87E18DD01F400B5EBC8 /* lodepng.cpp in Sources */,
 				50C269ED189477EE00E67DBD /* FkContext.cpp in Sources */,
+				5064D88118DD01F400B5EBC8 /* Timer.cpp in Sources */,
 				50C840A318907693007FA8B8 /* Input.cpp in Sources */,
 				50C8409A18907693007FA8B8 /* EnemySpider.cpp in Sources */,
+				5064D87F18DD01F400B5EBC8 /* PostProcessingFX.cpp in Sources */,
+				5064D89618DD5B9600B5EBC8 /* Images.cpp in Sources */,
 				50C8409818907693007FA8B8 /* EnemyQueen.cpp in Sources */,
 				50C840A218907693007FA8B8 /* Main.cpp in Sources */,
 				50C269F1189477EE00E67DBD /* SplinePlotter.cpp in Sources */,
@@ -301,8 +333,8 @@
 				50C269F0189477EE00E67DBD /* SampleAsset.cpp in Sources */,
 				50C8409D18907693007FA8B8 /* Explosion.cpp in Sources */,
 				50C8409B18907693007FA8B8 /* EnemyUnit.cpp in Sources */,
-				50C269EB189477EE00E67DBD /* CirclePlotter.cpp in Sources */,
 				50C269F6189477EE00E67DBD /* utils.cpp in Sources */,
+				5064D88218DD01F400B5EBC8 /* TrailBatch.cpp in Sources */,
 				50C840A018907693007FA8B8 /* Hero.cpp in Sources */,
 				50C269F4189477EE00E67DBD /* TextureAsset.cpp in Sources */,
 			);

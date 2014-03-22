@@ -18,24 +18,20 @@
 
 using namespace TyranoForce;
 
-void TyranoForce::HeroBullet::init(vec2 aPos, vec2 aHeading) {
-	img = assets.image("bullet");
-	collider.initWithImage(aPos, img);
-	heading = aHeading;
-	
+TyranoForce::HeroBullet::HeroBullet(vec2 aPos, vec2 aHeading) :
+Collider(aPos, gWorld.images.heroBullet),
+heading(aHeading)
+{
 }
 
 bool TyranoForce::HeroBullet::isOutsideGameArea() {
-	return collider.pos.x < -16 ||
-	       collider.pos.x > canvasSize.x+16 ||
-	       collider.pos.y < -16 ||
-	       collider.pos.y > canvasSize.y+16;
+	return !gWorld.view.contains(pos, 16);
 }
 
 void TyranoForce::HeroBullet::tick() {
-	collider.pos += heading * timer.deltaSeconds;
+	pos += heading * gWorld.timer.deltaSeconds;
 }
 
 void TyranoForce::HeroBullet::draw() {
-	renderer.drawImage(img, collider.pos);
+	gWorld.renderer.drawImage(gWorld.images.heroBullet, pos);
 }

@@ -14,30 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "Tyranoforce.h"
+#include "TyranoForce.h"
 
-using namespace TyranoForce;
+#define gImage(name) gWorld.assets.image(name)
 
-TyranoForce::Explosion::Explosion(vec2 apos, bool isBig) :
-pos(apos), big(isBig), t(0)
+TyranoForce::Images::Images() :
+heroBullet(gImage("bullet")),
+enemyBullet(gImage("bullet")),
+enemyMissile(gImage("missile")),
+smallExplosion(gImage("expl")),
+bigExplosion(gImage("explosion")),
+wasp(gImage("wasp")),
+spider(gImage("spider")),
+scarab(gImage("scarab")),
+queen(gImage("queen")),
+dino(gImage("dino"))
 {
-	gWorld.assets.sample("boom")->play();
 }
-
-ImageAsset *Explosion::asset() const {
-	return big ? gWorld.images.bigExplosion : gWorld.images.smallExplosion;
-}
-
-bool TyranoForce::Explosion::isComplete() {
-	
-	return t >= asset()->nframes / kExplosionFPS;
-}
-
-void TyranoForce::Explosion::tick() {
-	t += gWorld.timer.deltaSeconds;
-}
-
-void TyranoForce::Explosion::draw() {
-	gWorld.renderer.drawImage(asset(), pos, t * kExplosionFPS);
-}
-

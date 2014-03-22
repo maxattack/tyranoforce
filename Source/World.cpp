@@ -18,47 +18,58 @@
 
 using namespace TyranoForce;
 
-void TyranoForce::World::init() {
-	input.init();
-	parallax.init();
-	hud.init();
-	hero.init();
-	dino = assets.image("dino");
+#define CANVAS_WIDTH 160
+#define CANVAS_HEIGHT 240
+
+//SDL_GetWindowSize(TyranoForce::window, &pixelW, &pixelH);
+//TyranoForce::canvasSize = vec(canvasW, canvasW * pixelH / double(pixelW));
+
+static Viewport makeViewport() {
+	Viewport view;
+	view.setSizeWithWidth(CANVAS_WIDTH);
+	return view;
+}
+
+TyranoForce::World::World() :
+Singleton<World>(this),
+window(initContext("TyranoForce", 4*CANVAS_WIDTH, 4*CANVAS_HEIGHT)),
+view(makeViewport()),
+plotter(createBasicPlotter(512)),
+renderer(plotter),
+assets(loadAssets("assets.bin")),
+done(false)
+{
 }
 
 void TyranoForce::World::draw() {
-	renderer.begin(canvasSize);
+	glClear(GL_COLOR_BUFFER_BIT);
+	renderer.begin(view);
 	parallax.drawBackground();
 	parallax.drawForeground();
-	
-	renderer.drawImage(dino, vec(hud.easedArrowPosition, -6));
-
-	for(EnemyQueen *p=queens.begin(); p!=queens.end(); ++p) { p->draw(); }
-	for(EnemyScarab *p=scarabs.begin(); p!=scarabs.end(); ++p) { p->draw(); }
-	for(EnemySpider *p=spiders.begin(); p!=spiders.end(); ++p) { p->draw(); }
-	for(EnemyWasp *p=wasps.begin(); p!=wasps.end(); ++p) { p->draw(); }
-	
-	for(Explosion *p=explosions.begin(); p!=explosions.end(); ++p) { p->draw(); }
-	
-	for(EnemyBullet *p=enemyBullets.begin(); p!=enemyBullets.end(); ++p) { p->draw(); }
-	for(HeroBullet *p=heroBullets.begin(); p!=heroBullets.end(); ++p) { p->draw(); }
-	
+	renderer.drawImage(images.dino, vec(hud.getEasedArrowPosition(), -6));
+	for(auto& queen : queens) { queen.draw(); }
+	for(auto& scarab : scarabs) { scarab.draw(); }
+	for(auto& spider : spiders) { spider.draw(); }
+	for(auto& wasp : wasps) { wasp.draw(); }
+	for(auto& explosion : explosions) { explosion.draw(); }
+	for(auto& missile : enemyMissiles) { missile.draw(); }
+	for(auto& bullet : enemyBullets) { bullet.draw(); }
+	for(auto& bullet : heroBullets) { bullet.draw(); }
 	hero.draw();
-	
 	hud.draw();
-	
 	renderer.end();
+	SDL_GL_SwapWindow(window);	
 }
 
-template<typename EnemyType, int N>
-static bool collideBulletWith(World& world, HeroBullet &bullet, CompactPoolWithBuffer<EnemyType, N> &enemies) {
+template<typename EnemyType>
+static bool collideBulletWith(HeroBullet &bullet, CompactPool<EnemyType> &enemies) {
 	for (EnemyType *e=enemies.begin(); e!=enemies.end();) {
-		if (bullet.collider.overlaps(e->collider)) {
-			if (e->takeDamage(world, kHeroBulletDamage)) {
+		if (bullet.overlaps(*e)) {
+			if (e->takeDamage(kHeroBulletDamage)) {
 				enemies.release(e);
 			}
-			world.spawnExplosion(bullet.collider.pos, false);
-			world.heroBullets.release(&bullet);
+			gWorld.explosions.alloc(bullet.pos, false);
+			gWorld.heroBullets.release(&bullet);
 			return true;
 		} else {
 			e++;
@@ -68,30 +79,41 @@ static bool collideBulletWith(World& world, HeroBullet &bullet, CompactPoolWithB
 }
 
 void TyranoForce::World::tick() {
-	hud.tick(*this);
+	timer.tick();
+	input.enterFrame();
+	SDL_Event event;
+	while(SDL_PollEvent(&event)) {
+		if (!input.handleEvent(event)) {
+			done |= (event.type == SDL_QUIT) ||
+			(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE);
+		}
+	}
+	
+	hud.tick();
 	
 	// tick actors
+	auto h = view.height()+30;
 	for (EnemyWasp *p=wasps.begin(); p!=wasps.end();) {
-		p->tick(*this);
-		if(p->collider.pos.y < 270) { ++p; } else { wasps.release(p); }
+		p->tick();
+		if(p->pos.y < h) { ++p; } else { wasps.release(p); }
 	}
 	
 	for (EnemySpider *p=spiders.begin(); p!=spiders.end();) {
-		p->tick(*this);
-		if(p->collider.pos.y < 270) { ++p; } else { spiders.release(p); }
+		p->tick();
+		if(p->pos.y < h) { ++p; } else { spiders.release(p); }
 	}
 	
 	for (EnemyScarab *p=scarabs.begin(); p!=scarabs.end();) {
-		p->tick(*this);
-		if(p->collider.pos.y < 270) { ++p; } else { scarabs.release(p); }
+		p->tick();
+		if(p->pos.y < h) { ++p; } else { scarabs.release(p); }
 	}
 	
 	for (EnemyQueen *p=queens.begin(); p!=queens.end();) {
-		p->tick(*this);
-		if(p->collider.pos.y < 300) { ++p; } else { queens.release(p); }
+		p->tick();
+		if(p->pos.y < h+30) { ++p; } else { queens.release(p); }
 	}
 	
-	hero.tick(*this);
+	hero.tick();
 	
 	// tick hero bullets
 	for(HeroBullet *p=heroBullets.begin(); p!=heroBullets.end();) {
@@ -99,10 +121,11 @@ void TyranoForce::World::tick() {
 		if (p->isOutsideGameArea()) {
 			heroBullets.release(p);
 		} else if (!(
-			collideBulletWith(*this, *p, wasps) ||
-			collideBulletWith(*this, *p, spiders) ||
-			collideBulletWith(*this, *p, scarabs) ||
-			collideBulletWith(*this, *p, queens)
+			collideBulletWith(*p, enemyMissiles) ||
+			collideBulletWith(*p, wasps) ||
+			collideBulletWith(*p, spiders) ||
+			collideBulletWith(*p, scarabs) ||
+			collideBulletWith(*p, queens)
 		)) {
 			++p;
 		}
@@ -113,77 +136,68 @@ void TyranoForce::World::tick() {
 		p->tick();
 		if (p->isOutsideGameArea()) {
 			enemyBullets.release(p);
-		} else if (hero.checkForHit(*this, *p)) {
+		} else if (hero.checkForHit(p)) {
 			enemyBullets.release(p);
 		} else {
 			++p;
 		}
 	}
-	
-	// tick other effects
-	for(Explosion *p=explosions.begin(); p!=explosions.end();) {
+	for(EnemyMissile *p=enemyMissiles.begin(); p!=enemyMissiles.end();) {
 		p->tick();
-		if (p->isComplete()) {
-			explosions.release(p);
+		if (p->isOutsideGameArea()) {
+			enemyMissiles.release(p);
+		} else if (hero.checkForHit(p)) {
+			enemyMissiles.release(p);
 		} else {
 			++p;
 		}
 	}
+	
+	
+	// tick other effects
+	for(Explosion *p=explosions.begin(); p!=explosions.end();) {
+		p->tick();
+		if (p->isComplete()) { explosions.release(p); } else { ++p; }
+	}
 }
 
 void TyranoForce::World::discharge() {
-	switch(hud.chargeLevel) {
+	switch(hud.getChargeLevel()) {
 		case 1:
-			if (!wasps.isFull()) { wasps.alloc()->init(hud.arrowPosition); }
+			wasps.alloc(hud.getArrowPosition());
 			break;
 		case 2:
-			if (!spiders.isFull()) { spiders.alloc()->init(hud.arrowPosition); }
+			spiders.alloc(hud.getArrowPosition());
 			break;
 		case 3:
-			if (!scarabs.isFull()) { scarabs.alloc()->init(hud.arrowPosition); }
+			scarabs.alloc(hud.getArrowPosition());
 			break;
 		case 4:
-			if (!queens.isFull()) { queens.alloc()->init(hud.arrowPosition); }
+			queens.alloc(hud.getArrowPosition());
 			break;
 	}
 }
 
-void TyranoForce::World::spawnEnemyBullet(vec2 pos, vec2 heading) {
-	if (!enemyBullets.isFull()) {
-		enemyBullets.alloc()->init(pos, heading);
-	}
-}
-
-void TyranoForce::World::spawnHeroBullet(vec2 pos, vec2 heading) {
-	if (!heroBullets.isFull()) {
-		heroBullets.alloc()->init(pos, heading);
-	}
-}
-
-void TyranoForce::World::spawnExplosion(vec2 pos, bool isBig) {
-	if (!explosions.isFull()) {
-		explosions.alloc()->init(isBig ? assets.image("explosion") : assets.image("expl"), pos);
-	}
-}
-
-TyranoForce::EnemyIterator::EnemyIterator(World *aWorld) {
+TyranoForce::EnemyIterator::EnemyIterator() {
 	curr = 0;
-	world = aWorld;
 	COROUTINE_RESET;
 }
 
 bool TyranoForce::EnemyIterator::next() {
 	COROUTINE_BEGIN;
-	for(wasp=world->wasps.begin(); wasp!=world->wasps.end(); ++wasp) {
+	for(wasp=gWorld.wasps.begin(); wasp!=gWorld.wasps.end(); ++wasp) {
 		COROUTINE_YIELD_RESULT(true);
 	}
-	for(spider=world->spiders.begin(); spider!=world->spiders.end(); ++spider) {
+	for(spider=gWorld.spiders.begin(); spider!=gWorld.spiders.end(); ++spider) {
 		COROUTINE_YIELD_RESULT(true);
 	}
-	for(scarab=world->scarabs.begin(); scarab!=world->scarabs.end(); ++scarab) {
+	for(scarab=gWorld.scarabs.begin(); scarab!=gWorld.scarabs.end(); ++scarab) {
 		COROUTINE_YIELD_RESULT(true);
 	}
-	for(queen=world->queens.begin(); queen!=world->queens.end(); ++queen) {
+	for(queen=gWorld.queens.begin(); queen!=gWorld.queens.end(); ++queen) {
+		COROUTINE_YIELD_RESULT(true);
+	}
+	for(missile=gWorld.enemyMissiles.begin(); missile!=gWorld.enemyMissiles.end(); ++missile) {
 		COROUTINE_YIELD_RESULT(true);
 	}
 	curr = 0;

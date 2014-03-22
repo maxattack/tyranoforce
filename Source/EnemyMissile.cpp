@@ -16,31 +16,31 @@
 
 #include "TyranoForce.h"
 
-int main(int argc, char *argv[]) {
-
-	static TyranoForce::World world;
-
-	Mix_Music *music = Mix_LoadMUS("sv_ttt.xm");
-	if (music) {
-		Mix_PlayMusic(music, -1);
-	}
-	
-		
-#if __IPHONEOS__
-
-	SDL_iPhoneSetAnimationCallback(world.window, 1, [](void *context) {
-		gWorld.tick();
-		gWorld.draw();
-	}, 0);
-	
-#else
-
-	while(!world.done) {
-		world.tick();
-		world.draw();
-	}
-
-#endif
-	
-	return 0;
+TyranoForce::EnemyMissile::EnemyMissile(vec2 aPos, float aRadians) :
+EnemyUnit(aPos, gWorld.images.enemyMissile, 1),
+radians(aRadians),
+heading(unitVector(radians)) {
+	halfSize.y = halfSize.x;
 }
+
+bool TyranoForce::EnemyMissile::isOutsideGameArea() {
+	return !gWorld.view.contains(pos, 16);
+}
+
+void TyranoForce::EnemyMissile::tick() {
+	auto offset = gWorld.hero.pos - pos;
+	radians = easeRadians(
+		radians,
+		offset.radians(),
+		0.015f,
+		gWorld.timer.deltaSeconds
+	);
+	radians = clamp(radians, 0.333f*M_PI, 0.666f*M_PI);
+	heading = unitVector(radians);
+	pos += (kMissileSpeed * gWorld.timer.deltaSeconds) * heading;
+}
+
+void TyranoForce::EnemyMissile::draw() {
+	gWorld.renderer.drawImage(gWorld.images.enemyMissile, pos, heading.clockwise());
+}
+

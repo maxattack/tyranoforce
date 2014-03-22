@@ -18,61 +18,62 @@
 
 using namespace TyranoForce;
 
-void TyranoForce::Hero::init()  {
+TyranoForce::Hero::Hero() :
+firingTimer(2),
+flickeringTimer(-1),
+speed(0,0),
+frame(1),
+isActive(0),
+lives(3),
+img(gWorld.assets.image("hero")),
+Collider(vec(0.5f * gWorld.view.width(), gWorld.view.height()+16), vec(2,2))
+{
 	COROUTINE_RESET;
-	firingTimer = 2;
-	flickeringTimer = -1;
-	speed = vec(0,0);
-	frame = 1;
-	isActive = 0;
-	lives = 3;
-	img = assets.image("hero");
-	collider.init(vec(0.5f * canvasSize.x, canvasSize.y+16), vec(2,2));
 }
 
-bool TyranoForce::Hero::checkForHit(World& world, EnemyBullet &bullet) {
-	if (isVulnerable() && collider.overlaps(bullet.collider)) {
-		kill(world);
+bool TyranoForce::Hero::checkForHit(Collider *c) {
+	if (isVulnerable() && overlaps(*c)) {
+		kill();
 		return true;
 	} else {
 		return false;		
 	}
 }
 
-void TyranoForce::Hero::kill(World &world) {
+void TyranoForce::Hero::kill() {
 	isActive = false;
 	lives--;
-	world.spawnExplosion(collider.pos, true);
-	collider.pos = vec(0.5f * canvasSize.x, canvasSize.y + 16);
+	gWorld.explosions.alloc(pos, true);
+	pos = vec(0.5f * gWorld.view.width(), gWorld.view.height() + 16);
 }
 
-void TyranoForce::Hero::computeNextMove(World &world, float dt) {
+void TyranoForce::Hero::computeNextMove(float dt) {
 	
 	// determine target position (default bottom-center)
-	vec2 target = 0.5f * vec(canvasSize.x, canvasSize.y);
+	vec2 target = vec(0.5f, 0.75f) *gWorld.view.size();
 	
 	// if powerup
 	// TODO powerups
 	
 	// determine closest enemy
 	EnemyUnit *closest = 0;
-	for(EnemyIterator i(&world); i.next();) {
-		if (i.curr->collider.pos.y < collider.pos.x - 4 && (!closest || i.curr->collider.pos.y > closest->collider.pos.y)) {
-			closest = i.curr;
+	for(EnemyIterator i; i.next();) {
+		if (i->pos.y < pos.y - 4 && (!closest || i->pos.y > closest->pos.y)) {
+			closest = i;
 		}
 	}
 	if (closest) {
-		target.x = closest->collider.pos.x;
+		target.x = closest->pos.x;
 	}
 	
 	// spring physics
-	vec2 accel = kHeroTargetAccel * (target - collider.pos);
+	vec2 accel = float(kHeroTargetAccel) * (target - pos);
 	
 	if (flickeringTimer < 0.8f) {
 	
 		// bullet avoidance
-		for(EnemyBullet *p=world.enemyBullets.begin(); p!=world.enemyBullets.end(); ++p) {
-			vec2 delta = collider.pos - p->collider.pos;
+		for(auto& p : gWorld.enemyBullets) {
+			vec2 delta = pos - p.pos;
 			float distSq = delta.norm();
 			if (distSq < kHeroAvoidRadius * kHeroAvoidRadius) {
 				float dist = sqrtf(distSq);
@@ -89,23 +90,23 @@ void TyranoForce::Hero::computeNextMove(World &world, float dt) {
 	if (speedMagnitude > kHeroMaxSpeed) {
 		speed *= (kHeroMaxSpeed / speedMagnitude);
 	}
-	collider.pos += dt * speed;
+	pos += dt * speed;
 	
 	// limits
 	float pad = 8;
-	if (collider.pos.x < pad) {
-		collider.pos.x = pad;
+	if (pos.x < pad) {
+		pos.x = pad;
 		speed.x = 0;
-	} else if (collider.pos.x > canvasSize.x-pad) {
-		collider.pos.x = canvasSize.x-pad;
+	} else if (pos.x > gWorld.view.width()-pad) {
+		pos.x = gWorld.view.width()-pad;
 		speed.x = 0;
 	}
 	
-	if (collider.pos.y < 0) {
-		collider.pos.y = 0;
+	if (pos.y < 0) {
+		pos.y = 0;
 		speed.y = 0;
-	} else if (collider.pos.y > canvasSize.y) {
-		collider.pos.y = canvasSize.y;
+	} else if (pos.y > gWorld.view.height()) {
+		pos.y = gWorld.view.height();
 		speed.y = 0;
 	}
 	
@@ -113,9 +114,9 @@ void TyranoForce::Hero::computeNextMove(World &world, float dt) {
 	speed -= kHeroDrag * speed * dt;
 }
 
-void TyranoForce::Hero::tick(World &world) {
+void TyranoForce::Hero::tick() {
 	if (flickering()) {
-		flickeringTimer -= timer.deltaSeconds;
+		flickeringTimer -= gWorld.timer.deltaSeconds;
 	}
 	
 	COROUTINE_BEGIN;
@@ -124,8 +125,8 @@ void TyranoForce::Hero::tick(World &world) {
 		firingTimer = kHeroSecondsPerShoot;
 		flickeringTimer = 3;
 		isActive = true;
-		while(kHeroRestHeight - collider.pos.y > 4) {
-			collider.pos.y += 0.1f * (kHeroRestHeight - collider.pos.y);
+		while(kHeroRestHeight - pos.y > 4) {
+			pos.y += 0.1f * (kHeroRestHeight - pos.y);
 			COROUTINE_YIELD;
 		}
 		
@@ -133,19 +134,19 @@ void TyranoForce::Hero::tick(World &world) {
 		while(isActive) {
 			{
 				// fire on a regular interval
-				firingTimer -= timer.deltaSeconds;
+				firingTimer -= gWorld.timer.deltaSeconds;
 				if (firingTimer < 0) {
 					firingTimer += kHeroSecondsPerShoot;
-					if (world.anyEnemies()) {
-						assets.sample("shoot")->play();
-						world.spawnHeroBullet(collider.pos, vec(0,-kHeroBulletSpeed));
+					if (gWorld.anyEnemies()) {
+						gWorld.assets.sample("shoot")->play();
+						gWorld.heroBullets.alloc(pos, vec(0,-kHeroBulletSpeed));
 					}
 				}
 
 				// integrate motion
-				float dt = kHeroTimeScale * timer.deltaSeconds / float(kHeroIterations);
+				float dt = kHeroTimeScale * gWorld.timer.deltaSeconds / float(kHeroIterations);
 				for(int i=0; i<kHeroIterations; ++i) {
-					computeNextMove(world, dt);
+					computeNextMove(dt);
 				}
 				
 				// keyed frame
@@ -164,7 +165,7 @@ void TyranoForce::Hero::tick(World &world) {
 		// INACTIVE
 		firingTimer = kHeroRespawnTime;		
 		while(firingTimer > 0) {
-			firingTimer -= timer.deltaSeconds;
+			firingTimer -= gWorld.timer.deltaSeconds;
 			COROUTINE_YIELD;
 		}
 		firingTimer = kHeroSecondsPerShoot;
@@ -175,7 +176,7 @@ void TyranoForce::Hero::tick(World &world) {
 }
 
 void TyranoForce::Hero::draw() {
-	if (isActive && (!flickering() || int(8*timer.seconds) % 2==0)) {
-		renderer.drawImage(img, collider.pos, frame);
+	if (isActive && (!flickering() || int(8*gWorld.timer.seconds) % 2==0)) {
+		gWorld.renderer.drawImage(img, pos, frame);
 	}
 }
