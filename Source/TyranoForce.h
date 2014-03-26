@@ -18,8 +18,7 @@
 #define kScarabSecondsBetweenShots      3.0
 #define kQueenSecondsBetweenShots       4.0
 
-#define kMissileSpeed                   40.0
-#define kMissileSpreadDegrees           17.5
+#define kMissileSpeed                   55.0
 
 #define kHeroInitialLives               3
 #define kHeroSecondsPerShoot            0.4
